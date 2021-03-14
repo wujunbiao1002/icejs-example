@@ -1,7 +1,11 @@
 {
-  "name": "@alifd/fusion-design-pro-js",
+  "name": "xgcsgs-fe-web",
   "version": "0.1.0",
-  "description": "使用 JavaScript，包含大量 UI 区块，比如图表、表单等。",
+  "description": "小岗村-智慧政务系统",
+  "private": false,
+  "publishConfig": {
+    "registry": "http://192.168.6.96:8083/repository/npm-repo-hosted/"
+  },
   "dependencies": {
     "@alifd/next": "^1.21.0",
     "moment": "^2.24.0",
@@ -36,10 +40,5 @@
     "stylelint": "stylelint \"**/*.{css,scss,less}\"",
     "design": "icejs build --design"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alibaba-fusion/materials/tree/master/scaffolds/fusion-design-pro-js"
-  },
-  "private": true,
   "originTemplate": "@alifd/fusion-design-pro-js"
 }
