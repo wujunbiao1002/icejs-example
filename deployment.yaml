@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-xgcsgs-xgcsgs-fe-web
+  name: xgcsgs-fe-web
+  namespace: xgcsgs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-xgcsgs-xgcsgs-fe-web
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-xgcsgs-xgcsgs-fe-web
+    spec:
+      containers:
+        - image: 192.168.6.96:8098/xgcsgs-fe-web:<BUILD_TAG>
+          imagePullPolicy: Always
+          name: xgcsgs-fe-web
+          ports:
+            - containerPort: 80
+              protocol: TCP
