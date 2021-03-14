@@ -40,5 +40,9 @@
     "stylelint": "stylelint \"**/*.{css,scss,less}\"",
     "design": "icejs build --design"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alibaba-fusion/materials/tree/master/scaffolds/fusion-design-pro-js"
+  },
   "originTemplate": "@alifd/fusion-design-pro-js"
 }
