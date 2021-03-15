@@ -1,0 +1,116 @@
+@import '../../../../../node_modules/@alifd/next/variables';
+
+.healthContent {
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+}
+
+.leftContent {
+  width: 24%;
+  background: #fff;
+}
+
+.centerGap {
+  width: 20px;
+  background: #f5f5f5;
+}
+
+.leftContent .back {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 20px 20px 40px;
+  color: #254cb3;
+}
+
+.leftContent .back:hover {
+  cursor: pointer;
+}
+
+.leftContent .back span {
+  padding-left: 5px;
+}
+
+.leftContent .nameTitle, .rightContent .nameTitle {
+  padding: 5px 5px 5px 20px;
+  border-left: 5px solid #82cb5e;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.leftContent .leftIcon {
+  padding-right: 20px;
+}
+
+.leftContent .leftLine {
+  padding: 0 10px 0 8px;
+}
+
+.leftContent .personInfoWrap {
+  padding: 12px 5px 50px 20px;
+  color: #a0a0a0;
+}
+
+.leftContent .personInfo {
+  padding-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.leftOxygen {
+  margin-top: 20px;
+}
+
+.leftContent .oxygenList {
+  margin: 20px 15px;
+}
+
+.leftContent .oxygenItem {
+  display: flex;
+  justify-content: space-between;
+  background: #f4f6fc;
+  padding: 10px 15px;
+  margin: 8px;
+}
+
+.oxygenLine {
+  margin: 10px 10px 10px 28px;
+}
+
+.leftContent .oxygenItemTime {
+  color: #b8b9bb;
+}
+
+.leftContent .oxygenItemValue {
+  font-size: 16px;
+  color: #666;
+}
+
+.rightContent {
+  width: 74%;
+  // background: #fff;
+}
+
+.searchWrap {
+  background: #fff;
+  padding: 10px 15px;
+}
+
+.searchWrap button {
+  margin-left: 20px;
+}
+
+.pressureCharts, .rateCharts {
+  background: #fff;
+  padding: 15px 20px 5px 0;
+  height: 500px;
+}
+
+.rightGap {
+  height: 20px;
+  background: #f5f5f5;
+}
+
+
+

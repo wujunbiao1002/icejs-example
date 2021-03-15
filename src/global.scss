@@ -27,3 +27,42 @@ body {
 .warningInfo .next-tabs-wrapped > .next-tabs-bar .next-tabs-tab:hover {
   background: none;
 }
+
+
+// 健康监控
+
+.listWrap {
+  margin: 10px 20px 20px;
+  font-size: 16px;
+}
+
+.listItem {
+  border: 1px solid #eee;
+  padding: 22px 20px;
+  margin-top: 16px;
+}
+
+.listItem:hover {
+  cursor: pointer;
+}
+
+.listName {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.listName .healthName {
+  font-size: 16px;
+  padding: 0 8px;
+}
+
+.listName .healthNum {
+  font-size: 20px;
+}
+
+.imgRotate {
+  transform: rotate(270deg);
+}
+
+// 健康监控
