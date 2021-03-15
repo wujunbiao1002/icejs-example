@@ -25,7 +25,7 @@ const asideMenuConfig = [
       },
       {
         name: '视频监控',
-        path: '/Images/videoMonitoring.png',
+        path: '/video/monitoring',
         imageIcon: videoMonitoring,
       },
       {
