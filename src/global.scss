@@ -5,3 +5,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.warningInfo .next-tabs.next-medium .next-tabs-tab-inner {
+  padding: 15px 35px;
+  font-size: 16px;
+}
+
+.warningInfo .next-tabs-wrapped > .next-tabs-bar .next-tabs-tab {
+  background: none;
+}
+
+.warningInfo .next-tabs-wrapped.next-tabs-top > .next-tabs-bar .next-tabs-tab {
+  border: none;
+}
+
+.warningInfo .next-tabs-wrapped.next-tabs-top > .next-tabs-bar .next-tabs-tab.active {
+  border-width: 1px 1px 1px 1px;
+  border-color: #e6e6e6 #e6e6e6 #fff #e6e6e6;
+  border-style: solid;
+}
+
+.warningInfo .next-tabs-wrapped > .next-tabs-bar .next-tabs-tab:hover {
+  background: none;
+}
