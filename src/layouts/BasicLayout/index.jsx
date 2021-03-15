@@ -85,7 +85,7 @@ export default function BasicLayout({ children }) {
 
         <Shell.Content>{children}</Shell.Content>
         <Shell.Footer>
-          <Footer />
+          {/* <Footer /> */}
         </Shell.Footer>
       </Shell>
     </ConfigProvider>
