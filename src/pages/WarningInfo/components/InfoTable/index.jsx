@@ -7,9 +7,17 @@ import {
 } from '@alifd/next';
 import styles from './index.module.scss';
 
-
 const InfoTable = (props) => {
   const dataList = props.dataSource;
+  const renderTime = (value) => {
+    if (value != null) {
+      const valuess = value.split(' ');
+      return (
+        <span>{valuess[0]} <br />{valuess[1]}</span>
+      );
+    }
+    return value;
+  };
 
   return (
     <div className={styles.WorkTable}>
@@ -36,7 +44,7 @@ const InfoTable = (props) => {
             <Table.Column align="center" title="房间" dataIndex="room" />
             <Table.Column align="center" title="联系电话" dataIndex="tel" />
             <Table.Column align="center" title="设备IMEI" dataIndex="device" />
-            <Table.Column align="center" title="发生时间" dataIndex="startTime" />
+            <Table.Column align="center" title="发生时间" cell={renderTime} dataIndex="startTime" />
             <Table.Column align="center" title="状态" dataIndex="state" />
             <Table.Column align="center" title="状态处理人" dataIndex="operator" />
             <Table.Column align="center" title="操作" dataIndex="operation" />
