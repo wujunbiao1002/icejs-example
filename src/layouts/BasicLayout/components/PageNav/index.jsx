@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'ice';
 import { Nav } from '@alifd/next';
 import { asideMenuConfig } from '../../menuConfig';
+import Img from '@icedesign/img';
+import navFooter from '../../Images/navFooter.png';
 
 const { SubNav } = Nav;
 const NavItem = Nav.Item; // mock the auth object
@@ -38,10 +40,10 @@ function getNavMenuItems(menusData, initIndex, auth) {
 function getSubMenuOrItem(item, index, auth) {
   if (item.children && item.children.some((child) => child.name)) {
     const childrenItems = getNavMenuItems(item.children, index, auth);
-
     if (childrenItems && childrenItems.length > 0) {
       const subNav = (
         <SubNav key={item.name} icon={item.icon} label={item.name}>
+          {item.imageIcon ? <Img src={item.imageIcon} /> : null}
           {childrenItems}
         </SubNav>
       );
@@ -50,9 +52,17 @@ function getSubMenuOrItem(item, index, auth) {
 
     return null;
   }
-
   const navItem = (
     <NavItem key={item.path} icon={item.icon}>
+      {item.imageIcon ? <Img
+        src={item.imageIcon}
+        height="15"
+        style={{
+          marginRight: 20,
+          position: 'relative',
+          bottom: -2,
+        }}
+      /> : null}
       <Link to={item.path}>{item.name}</Link>
     </NavItem>
   );
@@ -93,6 +103,7 @@ const Navigation = (props, context) => {
       onOpen={setOpenKeys}
     >
       {getNavMenuItems(asideMenuConfig, 0, AUTH_CONFIG)}
+      <Img height={170} style={{position:'absolute', bottom: 0}} src={navFooter}/>
     </Nav>
   );
 };

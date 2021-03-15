@@ -7,6 +7,7 @@ import SolutionLink from './components/SolutionLink';
 import HeaderAvatar from './components/HeaderAvatar';
 import Logo from './components/Logo';
 import Footer from './components/Footer';
+import heardImg from './Images/heardImg.png';
 
 (function () {
   const throttle = function (type, name, obj = window) {
@@ -60,23 +61,23 @@ export default function BasicLayout({ children }) {
         style={{
           minHeight: '100vh',
         }}
-        type="brand"
+        type="light"
         fixedHeader={false}
       >
         <Shell.Branding>
-          <Logo image="https://img.alicdn.com/tfs/TB1.ZBecq67gK0jSZFHXXa9jVXa-904-826.png" text="Logo" />
+          <Logo image={heardImg} text="" />
         </Shell.Branding>
-        <Shell.Navigation
-          direction="hoz"
-          style={{
-            marginRight: 10,
-          }}
-        >
-          <GlobalSearch />
-        </Shell.Navigation>
+        {/*<Shell.Navigation*/}
+        {/*  direction="hoz"*/}
+        {/*  style={{*/}
+        {/*    marginRight: 10,*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  <GlobalSearch />*/}
+        {/*</Shell.Navigation>*/}
         <Shell.Action>
-          <Notice />
-          <SolutionLink />
+          {/*<Notice />*/}
+          {/*<SolutionLink />*/}
           <HeaderAvatar />
         </Shell.Action>
         <Shell.Navigation>

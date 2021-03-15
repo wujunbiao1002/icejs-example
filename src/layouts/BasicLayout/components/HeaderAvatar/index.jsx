@@ -1,11 +1,16 @@
 import React from 'react';
-import { Avatar, Overlay, Menu, Icon } from '@alifd/next';
+import { Avatar, Button, Overlay, Menu, Icon } from '@alifd/next';
 import styles from './index.module.scss';
+import avatarImg from '../../Images/avatar.png';
 
 const { Item } = Menu;
 const { Popup } = Overlay;
 
-const UserProfile = ({ name, avatar, mail }) => {
+const UserProfile = ({
+  name,
+  avatar,
+  mail,
+}) => {
   return (
     <div className={styles.profile}>
       <div className={styles.avatar}>
@@ -22,7 +27,19 @@ const UserProfile = ({ name, avatar, mail }) => {
 const HeaderAvatar = (props) => {
   const { name, avatar } = props;
   return (
-    <Popup
+    <div className={styles.headerAvatar}>
+      <Avatar size="small" src={avatar} alt="用户头像" />
+      <span
+        style={{
+          marginLeft: 10,
+        }}
+      >
+        {name}
+      </span>
+      &nbsp;&nbsp;
+      <Button style={{ borderRadius: 20 }}>退出</Button>
+    </div>
+  /* <Popup
       trigger={
         <div className={styles.headerAvatar}>
           <Avatar size="small" src={avatar} alt="用户头像" />
@@ -33,6 +50,8 @@ const HeaderAvatar = (props) => {
           >
             {name}
           </span>
+          &nbsp;&nbsp;
+          <Button>退出</Button>
         </div>
       }
       triggerType="click"
@@ -54,13 +73,13 @@ const HeaderAvatar = (props) => {
           </Item>
         </Menu>
       </div>
-    </Popup>
+    </Popup> */
   );
 };
 
 HeaderAvatar.defaultProps = {
-  name: 'MyName',
-  mail: 'name@gmail.com',
-  avatar: 'https://img.alicdn.com/tfs/TB1.ZBecq67gK0jSZFHXXa9jVXa-904-826.png',
+  name: 'Admin，你好',
+  mail: 'Admin@gmail.com',
+  avatar: avatarImg,
 };
 export default HeaderAvatar;
