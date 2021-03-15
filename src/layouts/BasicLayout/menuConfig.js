@@ -2,29 +2,40 @@ import warningInfo from './Images/warningInfo.png';
 import videoMonitoring from './Images/videoMonitoring.png';
 import healthMonitoring from './Images/healthMonitoring.png';
 import dataAnalysis from './Images/dataAnalysis.png';
+import keyAlarm from './Images/keyAlarm.png';
+
 
 const headerMenuConfig = [];
 const asideMenuConfig = [
   {
-    name: '预警信息管理',
-    path: '/warning/info',
-    imageIcon: warningInfo,
+    name: '一键报警',
+    path: '/',
+    // icon: 'toggle-right',
+    imageIcon: keyAlarm,
+    children: [
+      {
+        name: '预警信息管理',
+        path: '/warning/info',
+        imageIcon: warningInfo,
+      },
+      {
+        name: '健康监控',
+        path: '/health/monitoring',
+        imageIcon: healthMonitoring,
+      },
+      {
+        name: '视频监控',
+        path: '/Images/videoMonitoring.png',
+        imageIcon: videoMonitoring,
+      },
+      {
+        name: '数据分析',
+        path: '/data/analysis',
+        imageIcon: dataAnalysis,
+      },
+    ],
   },
-  {
-    name: '健康监控',
-    path: '/health/monitoring',
-    imageIcon: healthMonitoring,
-  },
-  {
-    name: '视频监控',
-    path: '/Images/videoMonitoring.png',
-    imageIcon: videoMonitoring,
-  },
-  {
-    name: '数据分析',
-    path: '/data/analysis',
-    imageIcon: dataAnalysis,
-  },
+
   // Template
   // {
   //   name: '数据页面',

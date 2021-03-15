@@ -41,9 +41,18 @@ function getSubMenuOrItem(item, index, auth) {
   if (item.children && item.children.some((child) => child.name)) {
     const childrenItems = getNavMenuItems(item.children, index, auth);
     if (childrenItems && childrenItems.length > 0) {
+      const name = item.imageIcon ? (<div><Img
+        src={item.imageIcon}
+        height="15"
+        style={{
+          marginRight: 20,
+          position: 'relative',
+          bottom: -2,
+        }}
+      />{item.name}</div>) : <div>{item.name}</div>;
+
       const subNav = (
-        <SubNav key={item.name} icon={item.icon} label={item.name}>
-          {item.imageIcon ? <Img src={item.imageIcon} /> : null}
+        <SubNav key={item.name} icon={item.icon} label={name}>
           {childrenItems}
         </SubNav>
       );
@@ -56,11 +65,9 @@ function getSubMenuOrItem(item, index, auth) {
     <NavItem key={item.path} icon={item.icon}>
       {item.imageIcon ? <Img
         src={item.imageIcon}
-        height="15"
+        height="12"
         style={{
-          marginRight: 20,
-          position: 'relative',
-          bottom: -2,
+          marginRight: 15,
         }}
       /> : null}
       <Link to={item.path}>{item.name}</Link>
@@ -103,7 +110,7 @@ const Navigation = (props, context) => {
       onOpen={setOpenKeys}
     >
       {getNavMenuItems(asideMenuConfig, 0, AUTH_CONFIG)}
-      <Img height={170} style={{position:'absolute', bottom: 0}} src={navFooter}/>
+      <Img height={170} style={{ position: 'absolute', bottom: 0 }} src={navFooter} />
     </Nav>
   );
 };
