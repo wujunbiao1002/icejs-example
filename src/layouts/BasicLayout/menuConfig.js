@@ -1,6 +1,27 @@
 const headerMenuConfig = [];
 const asideMenuConfig = [
   {
+    name: '预警信息管理',
+    path: '/warning/info',
+    icon: 'chart-pie',
+  },
+  {
+    name: '健康监控',
+    path: '/health/monitoring',
+    icon: 'chart-pie',
+  },
+  {
+    name: '视频监控',
+    path: '/video/monitoring',
+    icon: 'chart-pie',
+  },
+  {
+    name: '数据分析',
+    path: '/data/analysis',
+    icon: 'chart-pie',
+  },
+  // Template
+  {
     name: '数据页面',
     path: '/',
     icon: 'chart-pie',
