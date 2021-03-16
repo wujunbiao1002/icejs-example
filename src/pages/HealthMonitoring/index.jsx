@@ -1,5 +1,5 @@
-import React from 'react';
-import { ResponsiveGrid, Grid } from '@alifd/next';
+import React, { useState } from 'react';
+import { ResponsiveGrid, Grid, Pagination } from '@alifd/next';
 import PageHeader from '@/components/PageHeader';
 import mock from './mock';
 import pressureImg from '../../static/images/u677.png';
@@ -7,38 +7,42 @@ import rateImg from '../../static/images/u676.png';
 import oxygenImg from '../../static/images/u678.png';
 import arrowImg from '../../static/images/u684.png';
 import HealthCharts from '@/pages/HealthMonitoring/components/HealthCharts';
+import { logger } from 'ice';
+import styles from './index.module.scss';
 
 const { Cell } = ResponsiveGrid;
-const { Row, Col } = Grid;
+const {
+  Row,
+  Col,
+} = Grid;
 
-// eslint-disable-next-line @iceworks/best-practices/recommend-functional-component
-class FormGroup extends React.Component {
-  state = {
-    isShowCharts: false,
-    listItem: null,
+const HealthMonitoring = () => {
+  const [isShowCharts, setIsShowCharts] = useState(false);
+  const [listItem, setListItem] = useState(null);
+
+  const handleListItem = (data) => {
+    setIsShowCharts(true);
+    setListItem(data);
   };
 
-  handleListItem = (data) => {
-    this.setState({
-      isShowCharts: true,
-      listItem: data,
-    });
-  }
+  const handleCloseCharts = (isShowCharts) => {
+    setIsShowCharts(isShowCharts);
+  };
 
-  handleCloseCharts = (isShowCharts) => {
-    this.setState({
-      isShowCharts,
-    });
-  }
-
-  getListData = () => {
+  const getListData = () => {
     const listData = mock.healthList;
+    logger.debug(listData);
     return (
       <div>
         {
           listData.map((item, index) => (
             <div key={Number(index)} className="listContent">
-              <div className="listItem" onClick={() => { this.handleListItem(item); }}>
+              <div
+                className="listItem"
+                onClick={() => {
+                  handleListItem(item);
+                }}
+              >
                 <Row>
                   <Col span="3">
                     <div>{item.name}</div>
@@ -88,40 +92,48 @@ class FormGroup extends React.Component {
     );
   };
 
-  render() {
-    return (
-      <div>
-        {
-          this.state.isShowCharts ? (
-            <HealthCharts isShowCharts={this.state.isShowCharts} dataSource={this.state.listItem} closeCharts={this.handleCloseCharts} />
-          ) : (
-            <ResponsiveGrid gap={20} style={{ margin: '10px', padding: '10px', background: '#fff' }}>
-              <Cell colSpan={12}>
-                <PageHeader
-                  style={{ margin: '0', paddingBottom: '0' }}
-                  breadcrumbs={[
-                    {
-                      name: '系统首页',
-                    },
-                    {
-                      name: '健康监控',
-                    },
-                  ]}
-                />
-              </Cell>
+  return (
+    <div>
+      {
+        isShowCharts ? (
+          <HealthCharts isShowCharts={isShowCharts} dataSource={listItem} closeCharts={handleCloseCharts} />
+        ) : (
+          <ResponsiveGrid
+            gap={20}
+            style={{
+              margin: '10px',
+              padding: '10px',
+              background: '#fff',
+            }}
+          >
+            <Cell colSpan={12}>
+              <PageHeader
+                style={{
+                  margin: '0',
+                  paddingBottom: '0',
+                }}
+                breadcrumbs={[
+                  {
+                    name: '系统首页',
+                  },
+                  {
+                    name: '健康监控',
+                  },
+                ]}
+              />
+            </Cell>
 
-              <Cell colSpan={12}>
-                <div className="listWrap">
-                  {this.getListData()}
-                </div>
-              </Cell>
-            </ResponsiveGrid>
-          )
-        }
-      </div>
-    );
-  }
-}
+            <Cell colSpan={12}>
+              <div className="listWrap">
+                {getListData()}
+              </div>
+            </Cell>
+          </ResponsiveGrid>
+        )
+      }
+    </div>
+  );
+};
 
-export default FormGroup;
+export default HealthMonitoring;
 
