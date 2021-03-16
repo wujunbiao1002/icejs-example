@@ -13,7 +13,7 @@ const VideoView = (props) => {
         videoViewList.map((item) => {
           const path = `static/video/${ item.path}`;
           return (<Cell colSpan={3} className={styles.VideoColSpan}>
-            <video style={{ width: 300 }} controls autoPlay="autoplay">
+            <video style={{ width: 270, height: 150 }} controls autoPlay="autoplay">
               <source src={path} type="video/mp4" />
               你的游览器不支持播放，建议升级游览器。
             </video>
