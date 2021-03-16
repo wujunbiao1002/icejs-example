@@ -1,0 +1,20 @@
+@import '../../../../../node_modules/@alifd/next/variables';
+
+.nameTitle {
+  padding: 5px 5px 5px 20px;
+  border-left: 5px solid #97cefc;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.search {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.centerWord {
+  padding-right: 8px;
+}
+

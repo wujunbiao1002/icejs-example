@@ -14,7 +14,7 @@ let housePropertyInit;
 let rateInit;
 
 // eslint-disable-next-line @iceworks/best-practices/recommend-functional-component
-class HealthCharts extends React.Component {
+export default class HealthCharts extends React.Component {
   state = {
   };
 
@@ -131,7 +131,7 @@ class HealthCharts extends React.Component {
                 <div className={styles.nameTitle}>
                   血压
                 </div>
-                <div id="pressure" style={{ width: '100%', height: '450px' }} />
+                <div id="pressure" style={{ width: '100%', height: '300px' }} />
               </div>
             </div>
 
@@ -142,7 +142,7 @@ class HealthCharts extends React.Component {
                 <div className={styles.nameTitle}>
                   心率
                 </div>
-                <div id="rate" style={{ width: '100%', height: '450px' }} />
+                <div id="rate" style={{ width: '100%', height: '300px' }} />
               </div>
             </div>
           </div>
@@ -152,4 +152,3 @@ class HealthCharts extends React.Component {
   }
 }
 
-export default HealthCharts;
