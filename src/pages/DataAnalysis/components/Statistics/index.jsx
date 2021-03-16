@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.module.scss';
-import echarts from 'echarts';
-import { callingStatistics, rateStatistics, pressureStatistics, oxygenStatistics } from '@/static/js/echartsHealth';
+import * as echarts from 'echarts';
+import { callingStatistics, rateStatistics, pressureStatistics, oxygenStatistics } from '@/static/js/echartsStatistics';
 
 let callingInit;
 let rateInit;

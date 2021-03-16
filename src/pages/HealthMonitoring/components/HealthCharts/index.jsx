@@ -6,8 +6,8 @@ import {
   Progress,
 } from '@alifd/next';
 import styles from './index.module.scss';
-import echarts from 'echarts';
-import { houseType, rate } from '@/static/js/echartsHealth';
+import * as echarts from 'echarts';
+import { healthPressure, rate } from '@/static/js/echartsHealth';
 import { logger } from 'ice';
 import moment from 'moment';
 
