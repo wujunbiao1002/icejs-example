@@ -35,7 +35,34 @@ const asideMenuConfig = [
       },
     ],
   },
-
+  {
+    name: '智慧能源',
+    path: '/',
+    // icon: 'toggle-right',
+    imageIcon: keyAlarm,
+    children: [
+      {
+        name: '农田光伏',
+        path: '/list/table/filter',
+        imageIcon: warningInfo,
+      },
+      {
+        name: '健康监控',
+        path: '/health/monitoring',
+        imageIcon: healthMonitoring,
+      },
+      {
+        name: '视频监控',
+        path: '/video/monitoring',
+        imageIcon: videoMonitoring,
+      },
+      {
+        name: '数据分析',
+        path: '/data/analysis',
+        imageIcon: dataAnalysis,
+      },
+    ],
+  },
   // Template
   // {
   //   name: '数据页面',

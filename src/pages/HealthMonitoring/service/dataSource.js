@@ -1,5 +1,5 @@
 export default {
-  healthList: [
+  dataList: [
     {
       id: 1,
       name: '孟语梦',

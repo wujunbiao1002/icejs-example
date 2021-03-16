@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import {
   Table,
-  Input,
   Button,
-  Pagination, Message,
+  Pagination, Message, Search,
 } from '@alifd/next';
 import styles from './index.module.scss';
-import { listPageCallingList } from './service/api';
+import { listPageData } from './service/api';
 
 const HeartRateInfo = (props) => {
   const [dataSource, setDataSource] = useState({
@@ -15,22 +14,20 @@ const HeartRateInfo = (props) => {
     current: 1,
     total: 0,
   });
-  const [keyword, setKeyword] = useState();
   const { untreated, setUntreated } = props;
+  const [keyword, setKeyword] = useState();
   const [processed, setProcessed] = useState(10);
 
   useEffect(() => {
-    setDataSource(listPageCallingList(1, 10, ''));
+    setDataSource(listPageData(1, 10, ''));
   }, []);
 
   const handlePageChange = (value) => {
-    setDataSource(listPageCallingList(value, 10, ''));
+    setDataSource(listPageData(value, 10, ''));
   };
-  const search = () => {
-    setDataSource(listPageCallingList(1, 10, keyword));
-  };
-  const onchangeKeyword = (value) => {
+  const search = (value) => {
     setKeyword(value);
+    setDataSource(listPageData(1, 10, value));
   };
   const renderOperation = (value, index, record) => {
     if (record.operation === '已处理') {
@@ -49,7 +46,7 @@ const HeartRateInfo = (props) => {
             }
             return item;
           });
-          setDataSource(listPageCallingList(1, 10, keyword));
+          setDataSource(listPageData(1, 10, keyword));
           setUntreated(untreated - 1);
           setProcessed(processed + 1);
         }}
@@ -62,11 +59,7 @@ const HeartRateInfo = (props) => {
     <div className={styles.WorkTable}>
       <div className={styles.workerContainor}>
         <div className={styles.searchWrap}>
-          <Input
-            placeholder="请输入姓名、电话、关联设备号"
-            onChange={onchangeKeyword}
-          />
-          <Button type="primary" onClick={search}>查询</Button>
+          <Search type="primary" placeholder="请输入姓名/手机号码" onSearch={search} className={styles.search} />
         </div>
         <div className={styles.numWrap}>
           <div>未处理: {untreated}</div>

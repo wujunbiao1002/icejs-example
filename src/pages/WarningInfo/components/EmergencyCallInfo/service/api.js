@@ -1,9 +1,9 @@
-import callingData from './dataSource';
+import dataList from './dataSource';
 
 
-export const listPageCallingList = (current, pageSize, keyword) => {
+export const listPageData = (current, pageSize, keyword) => {
   if (keyword) {
-    const searchData = callingData.dataList.filter(item => item.name.includes(keyword) || item.tel.includes(keyword));
+    const searchData = dataList.dataList.filter(item => item.name.includes(keyword) || item.tel.includes(keyword));
     const data = searchData.slice((current - 1) * pageSize, pageSize * current);
     return {
       data,
@@ -12,11 +12,11 @@ export const listPageCallingList = (current, pageSize, keyword) => {
       current,
     };
   } else {
-    const data = callingData.dataList.slice((current - 1) * pageSize, pageSize * current);
+    const data = dataList.dataList.slice((current - 1) * pageSize, pageSize * current);
     return {
       data,
       pageSize,
-      total: callingData.dataList.length,
+      total: dataList.dataList.length,
       current,
     };
   }

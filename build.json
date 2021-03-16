@@ -13,6 +13,10 @@
           "zh-cn"
         ]
       }
-    ]
+    ],
+    ["build-plugin-css-assets-local", {
+      "outputPath": "assets",
+      "relativeCssPath": "../"
+    }]
   ]
 }

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { ResponsiveGrid, Grid, Pagination } from '@alifd/next';
+import React, { useEffect, useState } from 'react';
+import { ResponsiveGrid, Grid, Pagination, Search } from '@alifd/next';
 import PageHeader from '@/components/PageHeader';
-import mock from './mock';
 import pressureImg from '../../static/images/u677.png';
 import rateImg from '../../static/images/u676.png';
 import oxygenImg from '../../static/images/u678.png';
@@ -9,6 +8,7 @@ import arrowImg from '../../static/images/u684.png';
 import HealthCharts from '@/pages/HealthMonitoring/components/HealthCharts';
 import { logger } from 'ice';
 import styles from './index.module.scss';
+import { listPageData } from './service/api';
 
 const { Cell } = ResponsiveGrid;
 const {
@@ -19,23 +19,39 @@ const {
 const HealthMonitoring = () => {
   const [isShowCharts, setIsShowCharts] = useState(false);
   const [listItem, setListItem] = useState(null);
+  const [dataSource, setDataSource] = useState({
+    data: [],
+    pageSize: 10,
+    current: 1,
+    total: 0,
+  });
+  const [keyword, setKeyword] = useState();
 
   const handleListItem = (data) => {
     setIsShowCharts(true);
     setListItem(data);
   };
 
-  const handleCloseCharts = (isShowCharts) => {
-    setIsShowCharts(isShowCharts);
-  };
+  useEffect(() => {
+    setDataSource(listPageData(1, 10, ''));
+  }, []);
 
+  const handleCloseCharts = (value) => {
+    setIsShowCharts(value);
+  };
+  const handlePageChange = (value) => {
+    setDataSource(listPageData(value, 10, ''));
+  };
+  const search = (value) => {
+    logger.debug(value);
+    setKeyword(value);
+    setDataSource(listPageData(1, 10, value));
+  };
   const getListData = () => {
-    const listData = mock.healthList;
-    logger.debug(listData);
     return (
       <div>
         {
-          listData.map((item, index) => (
+          dataSource.data.map((item, index) => (
             <div key={Number(index)} className="listContent">
               <div
                 className="listItem"
@@ -122,10 +138,21 @@ const HealthMonitoring = () => {
                 ]}
               />
             </Cell>
-
+            <Cell colSpan={12}>
+              <div className={styles.searchWrap}>
+                <Search type="primary" placeholder="请输入姓名" defaultValue={keyword} onSearch={search} className={styles.search}/>
+              </div>
+            </Cell>
             <Cell colSpan={12}>
               <div className="listWrap">
                 {getListData()}
+              </div>
+              <div className={styles.paginationWrap}>
+                <Pagination
+                  total={dataSource.total}
+                  pageSize={10}
+                  onChange={handlePageChange}
+                />
               </div>
             </Cell>
           </ResponsiveGrid>
