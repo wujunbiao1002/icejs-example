@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Icon,
-  DatePicker,
-  Button,
-  Progress,
-} from '@alifd/next';
+import React, { useEffect } from 'react';
+import { DatePicker, Icon, Progress } from '@alifd/next';
 import styles from './index.module.scss';
 import * as echarts from 'echarts';
 import { healthPressure, rate } from '@/static/js/echartsHealth';
@@ -21,11 +16,12 @@ const bloodPressureChart = {
   chart: null,
   option: Object.assign({}, healthPressure),
 };
+let dateList = [];
+let bloodPressureHightList = [];
+let bloodPressureLowList = [];
+let heartRateList = [];
 
 const HealthCharts = (props) => {
-  const [startDate, setStartDate] = useState('2021-03-14');
-  const [endDate, setEndEndDate] = useState('2021-03-20');
-
   const { dataSource } = props;
   const resizeCharts = () => {
     bloodPressureChart.chart.resize();
@@ -38,11 +34,12 @@ const HealthCharts = (props) => {
   }, []);
 
   const loadChart = () => {
+    // 血压
     bloodPressureChart.chart = echarts.init(document.getElementById('pressure'));
-    bloodPressureChart.chart.setOption(bloodPressureChart.option);
     // 心率
     heartRateChart.chart = echarts.init(document.getElementById('rate'));
-    heartRateChart.chart.setOption(heartRateChart.option);
+    creatData('2021-03-14', '2021-03-20');
+    initChart();
   };
 
   const handleBack = () => {
@@ -63,47 +60,61 @@ const HealthCharts = (props) => {
       </div>
     );
   };
-  const onClickSearch = () => {
-    creatData();
-    bloodPressureChart.option.xAxis[0].data = ['2021-03-14', '2021-03-15', '2021-03-16', '2021-03-17', '2021-03-18', '2021-03-19', '2021-03-20'];
-    bloodPressureChart.option.series[0].data = [108, 432, 90, 555, 84, 888];
-    bloodPressureChart.option.series[1].data = [55, 300, 50, 400, 50, 200];
 
-    heartRateChart.option.xAxis[0].data = ['2021-03-14', '2021-03-15', '2021-03-16', '2021-03-17', '2021-03-18', '2021-03-19', '2021-03-20'];
-    heartRateChart.option.series[0].data = [108, 432, 90, 555, 84, 888];
-
-    bloodPressureChart.chart.setOption(bloodPressureChart.option);
-    heartRateChart.chart.setOption(heartRateChart.option);
-  };
-
-  const creatData = () => {
+  const creatData = (startDate, endDate) => {
     let _dt1 = new Date(startDate);
     const _dt2 = new Date(endDate);
     const dt1 = _dt1.getTime();
     const dt2 = _dt2.getTime();
     const day = parseInt(Math.abs(dt1 - dt2) / 1000 / 60 / 60 / 24);
-    const dateList = [startDate];
+    dateList = [];
+    bloodPressureHightList = [];
+    bloodPressureLowList = [];
+    heartRateList = [];
+    dateList.push(formatDate(_dt1));
+    bloodPressureHightList.push(getRandom(110, 140));
+    bloodPressureLowList.push(getRandom(60, 90));
+    heartRateList.push(getRandom(68, 95));
+
     for (let i = 1; i <= day; i++) {
       _dt1 = _dt1.setDate(_dt1.getDate() + 1);
       _dt1 = new Date(_dt1);
-      logger.debug(formatDate(_dt1));
       dateList.push(formatDate(_dt1));
-
+      bloodPressureHightList.push(getRandom(110, 140));
+      bloodPressureLowList.push(getRandom(60, 90));
+      heartRateList.push(getRandom(68, 95));
     }
   };
-  const formatDate = function (date) {
+  const getRandom = (n, m) => {
+    return Math.floor(Math.random() * (m - n + 1) + n);
+  };
+  const formatDate = (date) => {
     const y = date.getFullYear();
     let m = date.getMonth() + 1;
-    m = m < 10 ? '0' + m : m;
+    m = m < 10 ? `0${ m}` : m;
     let d = date.getDate();
-    d = d < 10 ? ('0' + d) : d;
-    return y + '-' + m + '-' + d;
+    d = d < 10 ? (`0${ d}`) : d;
+    return `${y }-${ m }-${ d}`;
   };
   const onOkRangePicker = (val) => {
-    logger.debug(val[0].format('YYYY-MM-DD'));
-    logger.debug(val[1].format('YYYY-MM-DD'));
-    setStartDate(val[0].format('YYYY-MM-DD'));
-    setEndEndDate(val[1].format('YYYY-MM-DD'));
+    const startDate = val[0].format('YYYY-MM-DD');
+    const endDate = val[1].format('YYYY-MM-DD');
+    logger.debug(startDate);
+    logger.debug(endDate);
+    creatData(startDate, endDate);
+    initChart();
+  };
+
+  const initChart = () => {
+    bloodPressureChart.option.xAxis[0].data = dateList;
+    bloodPressureChart.option.series[0].data = bloodPressureHightList;
+    bloodPressureChart.option.series[1].data = bloodPressureLowList;
+
+    heartRateChart.option.xAxis[0].data = dateList;
+    heartRateChart.option.series[0].data = heartRateList;
+
+    bloodPressureChart.chart.setOption(bloodPressureChart.option);
+    heartRateChart.chart.setOption(heartRateChart.option);
   };
   return (
     <div>
@@ -166,7 +177,6 @@ const HealthCharts = (props) => {
         <div className={styles.rightContent}>
           <div className={styles.searchWrap}>
             <RangePicker onOk={onOkRangePicker} />
-            <Button type="primary" onClick={onClickSearch}>查询</Button>
           </div>
 
           <div className={styles.rightGap} />
