@@ -80,7 +80,7 @@ export default function BasicLayout({ children }) {
           {/* <SolutionLink /> */}
           <HeaderAvatar />
         </Shell.Action>
-        <Shell.Navigation style={{ overflowX: 'visible' }}>
+        <Shell.Navigation style={{ overflow: 'hidden' }}>
           <PageNav />
         </Shell.Navigation>
 

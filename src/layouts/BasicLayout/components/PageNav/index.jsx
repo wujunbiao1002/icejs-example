@@ -110,7 +110,7 @@ const Navigation = (props, context) => {
       onOpen={setOpenKeys}
     >
       {getNavMenuItems(asideMenuConfig, 0, AUTH_CONFIG)}
-      <Img height={170} style={{ position: 'absolute', bottom: 0 }} src={navFooter} />
+      <Img height={165} style={{ position: 'absolute', bottom: 0 }} src={navFooter} />
     </Nav>
   );
 };
