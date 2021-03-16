@@ -19,7 +19,7 @@ const heartRateChart = {
 };
 const bloodPressureChart = {
   chart: null,
-  option: Object.assign({}, houseType),
+  option: Object.assign({}, healthPressure),
 };
 
 const HealthCharts = (props) => {

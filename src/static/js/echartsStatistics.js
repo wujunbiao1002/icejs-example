@@ -188,6 +188,7 @@ export const callingStatistics = {
     left: 'center',
     textStyle: {
       fontWeight: 'normal',
+      fontSize: 16,
     },
   },
   tooltip: {
@@ -224,7 +225,7 @@ export const callingStatistics = {
             position: 'center',
             color: '#666',
             formatter: '{value|{c}}\n{name|{b}}',
-            fontSize: '16',
+            fontSize: '14',
             rich: {
               value: {
                 fontWeight: 'bold',
@@ -253,6 +254,7 @@ export const rateStatistics = {
     left: 'center',
     textStyle: {
       fontWeight: 'normal',
+      fontSize: 16,
     },
   },
   tooltip: {
@@ -289,7 +291,7 @@ export const rateStatistics = {
             position: 'center',
             color: '#666',
             formatter: '{value|{c}}\n{name|{b}}',
-            fontSize: '16',
+            fontSize: '14',
             rich: {
               value: {
                 fontWeight: 'bold',
@@ -317,6 +319,7 @@ export const pressureStatistics = {
     left: 'center',
     textStyle: {
       fontWeight: 'normal',
+      fontSize: 16,
     },
   },
   tooltip: {
@@ -353,7 +356,7 @@ export const pressureStatistics = {
             position: 'center',
             color: '#666',
             formatter: '{value|{c}}\n{name|{b}}',
-            fontSize: '16',
+            fontSize: '14',
             rich: {
               value: {
                 fontWeight: 'bold',
@@ -381,6 +384,7 @@ export const oxygenStatistics = {
     left: 'center',
     textStyle: {
       fontWeight: 'normal',
+      fontSize: 16,
     },
   },
   tooltip: {
@@ -417,7 +421,7 @@ export const oxygenStatistics = {
             position: 'center',
             color: '#666',
             formatter: '{value|{c}}\n{name|{b}}',
-            fontSize: '16',
+            fontSize: '14',
             rich: {
               value: {
                 fontWeight: 'bold',

@@ -24,8 +24,6 @@ export const healthPressure = {
     },
     type: 'value',
     boundaryGap: [0, '100%'],
-    // splitNumber: [20],
-    data: [462, 654, 356, 239],
     ...setYAxis,
   }],
   series: [
@@ -97,7 +95,7 @@ export const rate = {
   xAxis: [{
     boundaryGap: false,
     type: 'category',
-    data: ['2031/3/2', '2021/3/3', '2021/3/4', '2021/3/5', '2021/3/6', '2021/3/7'],
+    data: ['2021-03-14', '2021-03-15', '2021-03-16', '2021-03-17', '2021-03-18', '2021-03-19', '2021-03-20'],
     ...setXAxis,
   }],
   yAxis: [{
@@ -111,27 +109,6 @@ export const rate = {
     type: 'value',
     boundaryGap: [0, '100%'],
     ...setYAxis,
-    data: [462, 654, 356, 239],
-    axisLabel: {
-      color: '#ccc',
-    },
-    splitLine: {
-      lineStyle: {
-        color: '#ccc',
-      },
-    },
-    // splitNumber: [20],
-    // 坐标轴轴线
-    axisLine: {
-      show: true,
-      lineStyle: {
-        color: '#ccc',
-      },
-    },
-    // 坐标轴刻度
-    axisTick: {
-      show: false,
-    },
   }],
   series: [
     {
