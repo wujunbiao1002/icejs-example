@@ -38,8 +38,8 @@ export default {
     },
     {
       id: 4,
-      name: '郗向露',
-      sex: '女',
+      name: '双学博',
+      sex: '男',
       room: '501',
       tel: '15148886222',
       prewarning: '一级',

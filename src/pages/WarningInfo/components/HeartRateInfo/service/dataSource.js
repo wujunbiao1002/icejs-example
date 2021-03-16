@@ -2,8 +2,8 @@ export default {
   dataList: [
     {
       id: 1,
-      name: '池畅然',
-      sex: '女',
+      name: '夏和同',
+      sex: '男',
       room: '101',
       tel: '18210443800',
       prewarning: '三级',
@@ -14,8 +14,8 @@ export default {
     },
     {
       id: 2,
-      name: '司伊颜',
-      sex: '女',
+      name: '金子默',
+      sex: '男',
       room: '101',
       tel: '18078963916',
       prewarning: '一级',
