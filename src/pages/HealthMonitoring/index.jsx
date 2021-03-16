@@ -8,7 +8,7 @@ import arrowImg from '../../static/images/u684.png';
 import HealthCharts from '@/pages/HealthMonitoring/components/HealthCharts';
 import { logger } from 'ice';
 import styles from './index.module.scss';
-import { listPageData } from './service/api';
+import { listPageData } from './services/api';
 
 const { Cell } = ResponsiveGrid;
 const {

@@ -1,4 +1,4 @@
-import dataList from './dataSource';
+import dataList from './mock';
 
 
 export const listPageData = (current, pageSize, keyword) => {

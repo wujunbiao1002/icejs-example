@@ -5,7 +5,7 @@ import {
   Pagination, Message, Search,
 } from '@alifd/next';
 import styles from './index.module.scss';
-import { listPageData } from './service/api';
+import { listPageData } from './services/api';
 
 const EmergencyCallInfo = (props) => {
   const [dataSource, setDataSource] = useState({
