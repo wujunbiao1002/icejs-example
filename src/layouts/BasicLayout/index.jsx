@@ -67,27 +67,27 @@ export default function BasicLayout({ children }) {
         <Shell.Branding>
           <Logo image={heardImg} text="" />
         </Shell.Branding>
-        {/*<Shell.Navigation*/}
-        {/*  direction="hoz"*/}
-        {/*  style={{*/}
-        {/*    marginRight: 10,*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <GlobalSearch />*/}
-        {/*</Shell.Navigation>*/}
+        {/* <Shell.Navigation */}
+        {/*  direction="hoz" */}
+        {/*  style={{ */}
+        {/*    marginRight: 10, */}
+        {/*  }} */}
+        {/* > */}
+        {/*  <GlobalSearch /> */}
+        {/* </Shell.Navigation> */}
         <Shell.Action>
-          {/*<Notice />*/}
-          {/*<SolutionLink />*/}
+          {/* <Notice /> */}
+          {/* <SolutionLink /> */}
           <HeaderAvatar />
         </Shell.Action>
-        <Shell.Navigation>
+        <Shell.Navigation style={{ overflowX: 'visible' }}>
           <PageNav />
         </Shell.Navigation>
 
         <Shell.Content>{children}</Shell.Content>
-        <Shell.Footer>
-          {/* <Footer /> */}
-        </Shell.Footer>
+        {/*<Shell.Footer>*/}
+        {/*  <Footer />*/}
+        {/*</Shell.Footer>*/}
       </Shell>
     </ConfigProvider>
   );
