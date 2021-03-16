@@ -1,8 +1,12 @@
 import React from 'react';
 import { ResponsiveGrid, Grid } from '@alifd/next';
 import PageHeader from '@/components/PageHeader';
-import calling from '../../static/images/u97.png';
-import dealing from '../../static/images/u99.png';
+import calling from '../../static/images/calling.png';
+import rate from '../../static/images/rate.png';
+import pressure from '../../static/images/pressure.png';
+import oxygen from '../../static/images/oxygen.png';
+import dealing from '../../static/images/warning.png';
+import handled from '../../static/images/num.png';
 import WarningCharts from '@/pages/DataAnalysis/components/WarningCharts';
 import Statistics from '@/pages/DataAnalysis/components/Statistics';
 
@@ -43,23 +47,23 @@ const FormGroup = () => {
                   </div>
                 </Col>
                 <Col span="6">
-                  <div className="warning-num">23</div>
+                  <div className="warning-num">3</div>
                   <div className="warning-title">
-                    <img src={calling} alt="img" />
+                    <img src={rate} alt="img" />
                     <span>心率异常</span>
                   </div>
                 </Col>
                 <Col span="6">
-                  <div className="warning-num">14</div>
+                  <div className="warning-num">3</div>
                   <div className="warning-title">
-                    <img src={calling} alt="img" />
+                    <img src={pressure} alt="img" />
                     <span>血压异常</span>
                   </div>
                 </Col>
                 <Col span="6">
-                  <div className="warning-num">11</div>
+                  <div className="warning-num">4</div>
                   <div className="warning-title">
-                    <img src={calling} alt="img" />
+                    <img src={oxygen} alt="img" />
                     <span>血氧异常</span>
                   </div>
                 </Col>
@@ -75,7 +79,7 @@ const FormGroup = () => {
               </div>
               <Row>
                 <Col span="6">
-                  <div className="warning-num">10</div>
+                  <div className="warning-num">29</div>
                   <div className="warning-title">
                     <img src={dealing} alt="img" />
                     <span>本月预警数</span>
@@ -84,12 +88,12 @@ const FormGroup = () => {
                 <Col span="6">
                   <div className="warning-num">9</div>
                   <div className="warning-title">
-                    <img src={dealing} alt="img" />
+                    <img src={handled} alt="img" />
                     <span>本月已处理数</span>
                   </div>
                 </Col>
                 <Col span="6">
-                  <div className="warning-num">200</div>
+                  <div className="warning-num">181</div>
                   <div className="warning-title">
                     <img src={dealing} alt="img" />
                     <span>本年预警数</span>
@@ -98,7 +102,7 @@ const FormGroup = () => {
                 <Col span="6">
                   <div className="warning-num">170</div>
                   <div className="warning-title">
-                    <img src={dealing} alt="img" />
+                    <img src={handled} alt="img" />
                     <span>本年已处理数</span>
                   </div>
                 </Col>

@@ -3,8 +3,8 @@ import {
   DatePicker,
 } from '@alifd/next';
 import styles from './index.module.scss';
-import echarts from 'echarts';
-import { warning, age } from '@/static/js/echartsHealth';
+import * as echarts from 'echarts';
+import { warning, age } from '@/static/js/echartsStatistics';
 
 const { RangePicker } = DatePicker;
 let rateInit;

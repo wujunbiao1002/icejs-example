@@ -6,8 +6,8 @@ import {
   Progress,
 } from '@alifd/next';
 import styles from './index.module.scss';
-import echarts from 'echarts';
-import { houseType, rate } from '@/static/js/echartsHealth';
+import * as echarts from 'echarts';
+import { healthPressure, rate } from '@/static/js/echartsHealth';
 
 const { RangePicker } = DatePicker;
 let housePropertyInit;
@@ -26,7 +26,7 @@ const HealthCharts = (props) => {
 
   const loadChart = () => {
     housePropertyInit = echarts.init(document.getElementById('pressure'));
-    housePropertyInit.setOption(houseType);
+    housePropertyInit.setOption(healthPressure);
     // 心率
     rateInit = echarts.init(document.getElementById('rate'));
     rateInit.setOption(rate);
