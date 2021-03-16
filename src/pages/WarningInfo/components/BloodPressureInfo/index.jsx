@@ -40,7 +40,7 @@ const BloodPressureInfo = (props) => {
         type="primary"
         text
         onClick={() => {
-          Message.success(`${record.name} - 已处理`);
+          Message.success(`${record.name} - 血压异常已处理`);
           const data = dataSource.data.map((item) => {
             if (item.id === record.id) {
               item.operator = '王金国';

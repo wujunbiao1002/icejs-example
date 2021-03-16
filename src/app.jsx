@@ -5,6 +5,9 @@ import { getLocale } from '@/utils/locale';
 
 const locale = getLocale();
 const appConfig = {
+  logger: {
+    smartLoglevel: true,
+  },
   app: {
     rootId: 'ice-container',
     addProvider: ({ children }) => <LocaleProvider locale={locale}>{children}</LocaleProvider>,
