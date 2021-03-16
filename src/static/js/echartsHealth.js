@@ -230,7 +230,8 @@ export const warning = {
   grid: {
     left: '3%',
     right: '4%',
-    bottom: '6%',
+    bottom: '12%',
+    top: '3%',
     containLabel: true,
   },
   tooltip: {
@@ -239,15 +240,10 @@ export const warning = {
       color: '#ccc',
     },
   },
-  title: {
-    left: 'center',
-    padding: [20, 0, 10, 0],
-    text: '出租屋人口数量统计',
-    textStyle: { // 主标题文本样式
-      fontSize: 18,
-      fontWeight: '500',
-      color: '#fff',
-    },
+  legend: {
+    data: ['血氧异常', '血压异常', '紧急呼叫', '心率异常'],
+    bottom: '0',
+    icon: 'circle',
   },
   xAxis: [{
     boundaryGap: false,
@@ -293,7 +289,7 @@ export const warning = {
   }],
   series: [
     {
-      name: '心率',
+      name: '血氧异常',
       type: 'line',
       smooth: true,
       symbol: 'none',
@@ -320,7 +316,7 @@ export const warning = {
       data: [218, 182, 190, 210, 184, 219, 201, 199],
     },
     {
-      name: '心率',
+      name: '血压异常',
       type: 'line',
       smooth: true,
       symbol: 'none',
@@ -347,7 +343,7 @@ export const warning = {
       data: [128, 182, 190, 98, 83, 129, 99, 123],
     },
     {
-      name: '心率',
+      name: '紧急呼叫',
       type: 'line',
       smooth: true,
       symbol: 'none',
@@ -374,7 +370,7 @@ export const warning = {
       data: [128, 92, 100, 130, 94, 129, 104, 121],
     },
     {
-      name: '心率',
+      name: '心率异常',
       type: 'line',
       smooth: true,
       symbol: 'none',
@@ -403,3 +399,267 @@ export const warning = {
   ],
 };
 
+// 年龄段分布
+export const age = {
+  tooltip: {
+    trigger: 'axis',
+    textStyle: {
+      color: '#ccc',
+    },
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    top: '2%',
+    containLabel: true,
+  },
+  xAxis: [{
+    data: ['50~59', '60~69', '60~69', '60~69', '60~69'],
+    axisLabel: { // 文字倾斜
+      interval: 0,
+      rotate: 0,
+      color: '#ccc',
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#ccc',
+      },
+    },
+    axisTick: {
+      show: false,
+    },
+  }],
+  yAxis: {
+    axisLine: {
+      lineStyle: {
+        color: '#ccc',
+      },
+    },
+    axisTick: {
+      show: false,
+    },
+    axisLabel: {
+      textStyle: {
+        color: '#ccc',
+      },
+    },
+    // 坐标轴在 grid 区域中的分隔线
+    splitLine: {
+      lineStyle: {
+        color: '#ccc',
+      },
+    },
+  },
+  series: [
+    {
+      type: 'bar',
+      barWidth: '15%',
+      barGap: 6,
+      barMaxWidth: '30%',
+      itemStyle: {
+        normal: {
+          show: true,
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [{
+              offset: 0, color: '#50b7ff', // 0% 处的颜色
+            }, {
+              offset: 1, color: '#347bff', // 100% 处的颜色
+            }],
+          },
+        },
+      },
+      data: [610, 822, 500, 210, 88],
+    },
+  ],
+};
+
+// 紧急呼叫统计
+export const callingStatistics = {
+  title: {
+    text: '4837',
+    subtext: '总预警数',
+    left: 'center',
+    top: '36%',
+  },
+  tooltip: {
+    trigger: 'item',
+  },
+  series: [
+    {
+      type: 'pie',
+      radius: [60, 80],
+      center: ['50%', '42%'],
+      data: [
+        {
+          value: 3399,
+          name: 'invisible',
+          tooltip: {
+            show: false,
+          },
+          itemStyle: {
+            normal: {
+              color: '#f2f6fc',
+            },
+            emphasis: {
+              color: '#f2f6fc',
+            },
+          },
+        },
+        {
+          value: 1438,
+          name: '紧急呼叫',
+          itemStyle: {
+            normal: {
+              color: '#97cefc',
+              shadowBlur: 0,
+            },
+          },
+        },
+      ],
+    },
+  ],
+};
+
+// 心率异常统计
+export const rateStatistics = {
+  title: {
+    text: '2000',
+    subtext: '总预警数',
+    left: 'center',
+    top: '36%',
+  },
+  tooltip: {
+    trigger: 'item',
+  },
+  series: [
+    {
+      type: 'pie',
+      radius: [60, 80],
+      center: ['50%', '42%'],
+      data: [
+        {
+          value: 1200,
+          name: 'invisible',
+          tooltip: {
+            show: false,
+          },
+          itemStyle: {
+            normal: {
+              color: '#f2f6fc',
+            },
+            emphasis: {
+              color: '#f2f6fc',
+            },
+          },
+        },
+        {
+          value: 800,
+          name: '心率异常',
+          itemStyle: {
+            normal: {
+              color: '#94d376',
+            },
+          },
+        },
+      ],
+    },
+  ],
+};
+
+// 血压异常统计
+export const pressureStatistics = {
+  title: {
+    text: '1000',
+    subtext: '总预警数',
+    left: 'center',
+    top: '36%',
+  },
+  tooltip: {
+    trigger: 'item',
+  },
+  series: [
+    {
+      type: 'pie',
+      radius: [60, 80],
+      center: ['50%', '42%'],
+      data: [
+        {
+          value: 500,
+          name: 'invisible',
+          tooltip: {
+            show: false,
+          },
+          itemStyle: {
+            normal: {
+              color: '#f2f6fc',
+            },
+            emphasis: {
+              color: '#f2f6fc',
+            },
+          },
+        },
+        {
+          value: 1000,
+          name: '血压异常',
+          itemStyle: {
+            normal: {
+              color: '#ffdf5e',
+            },
+          },
+        },
+      ],
+    },
+  ],
+};
+
+// 血氧异常统计
+export const oxygenStatistics = {
+  title: {
+    text: '1000',
+    subtext: '总预警数',
+    left: 'center',
+    top: '36%',
+  },
+  tooltip: {
+    trigger: 'item',
+  },
+  series: [
+    {
+      type: 'pie',
+      radius: [60, 80],
+      center: ['50%', '42%'],
+      data: [
+        {
+          value: 500,
+          name: 'invisible',
+          tooltip: {
+            show: false,
+          },
+          itemStyle: {
+            normal: {
+              color: '#f2f6fc',
+            },
+            emphasis: {
+              color: '#f2f6fc',
+            },
+          },
+        },
+        {
+          value: 500,
+          name: '血氧异常',
+          itemStyle: {
+            normal: {
+              color: '#b5a2ff',
+            },
+          },
+        },
+      ],
+    },
+  ],
+};

@@ -7,16 +7,12 @@
   font-weight: bold;
 }
 
-.search {
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-  padding-right: 10px;
+.bottomWrap {
+  display: flex;
+  justify-content: stretch;
 }
 
-.centerWord {
-  padding-right: 8px;
+.bottomItem {
+  width: 25%;
+  background: #fff;
 }
-
