@@ -2,8 +2,8 @@ export default {
   dataList: [
     {
       id: 1,
-      name: '陆臻晰',
-      sex: '女',
+      name: '芮嘉志',
+      sex: '男',
       room: '150',
       tel: '19907452692',
       prewarning: '三级',
@@ -38,11 +38,11 @@ export default {
     },
     {
       id: 4,
-      name: '孟语梦',
-      sex: '女',
+      name: '戌弘壮',
+      sex: '男',
       room: '407',
       tel: '13654922294',
-      prewarning: '一级',
+      prewarning: '二级',
       startTime: '2021-03-19 19:54:11',
       state: '已处理',
       operator: '王金国',
