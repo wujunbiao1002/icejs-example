@@ -4,6 +4,7 @@ import PageHeader from '@/components/PageHeader';
 import calling from '../../static/images/u97.png';
 import dealing from '../../static/images/u99.png';
 import WarningCharts from '@/pages/DataAnalysis/components/WarningCharts';
+import Statistics from '@/pages/DataAnalysis/components/Statistics';
 
 const { Cell } = ResponsiveGrid;
 const { Row, Col } = Grid;
@@ -105,20 +106,12 @@ const FormGroup = () => {
             </div>
           </div>
 
-          <div className="analysis-center">
-            <div className="analysis-warning-wrap">
-              <div className="analysis-warning">
-                <WarningCharts />
-              </div>
-            </div>
+          <div>
+            <WarningCharts />
+          </div>
 
-            <div className="centerGap" />
-
-            <div className="analysis-warning-wrap">
-              <div className="analysis-warning">
-                <WarningCharts />
-              </div>
-            </div>
+          <div>
+            <Statistics />
           </div>
         </div>
       </Cell>
