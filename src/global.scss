@@ -66,3 +66,54 @@ body {
 }
 
 // 健康监控
+
+// 数据分析
+
+.centerGap {
+  width: 20px;
+  background: #f5f5f5;
+}
+
+.analysis-top, .analysis-center {
+  display: flex;
+}
+
+.analysis-center {
+  margin: 20px 0;
+}
+
+.analysis-warning-wrap {
+  background: #fff;
+  width: 50%;
+  padding-bottom: 15px;
+}
+
+.analysis-warning {
+  padding: 16px 10px 10px 0;
+}
+
+.analysis-title {
+  padding: 5px 5px 5px 20px;
+  border-left: 5px solid #97cefc;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.warning-num {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.warning-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.warning-title span {
+  padding-left: 8px;
+}
+
+// 数据分析
