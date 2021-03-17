@@ -6,7 +6,7 @@ export const farmlandEfficiency = {
     splitNumber: 10,
     axisLine: {
       lineStyle: {
-        width: 10,
+        width: 6,
         color: [
           [0.2, '#008500'],
           [0.8, '#2f7bb1'],
@@ -23,22 +23,23 @@ export const farmlandEfficiency = {
       length: 0,
     },
     splitLine: {
-      distance: -10,
-      length: 20,
+      distance: -6,
+      length: 14,
       lineStyle: {
         color: 'auto',
-        width: 4,
+        width: 2,
       },
     },
     axisLabel: {
       color: 'auto',
-      distance: 20,
-      fontSize: 14,
+      distance: 10,
+      fontSize: 12,
     },
     detail: {
       valueAnimation: true,
       formatter: '{value} %',
-      color: '#868686',
+      color: '#333',
+      fontSize: 20,
       fontWeight: 'normal',
       offsetCenter: [0, '100%'],
     },

@@ -8,12 +8,18 @@
 }
 
 .farmlandContent {
+  flex: 3;
   display: inline-flex;
   background-color: #fff;
 }
 
 .verticalGap {
   width: 15px;
+  background-color: #f3f6fb;
+}
+
+.levelGap {
+  height: 15px;
   background-color: #f3f6fb;
 }
 
@@ -62,6 +68,24 @@
 // 逆变器效率
 .efficiency {
   background-color: #fff;
-  width: 20%;
+  flex: 1;
   padding: 20px 0;
+}
+
+// 右侧
+.ball {
+  flex: 1;
+}
+
+.ballItem {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 10px;
+  height: 30%;
+}
+
+.ballDes {
+  padding-left: 15px;
 }

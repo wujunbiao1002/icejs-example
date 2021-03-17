@@ -4,6 +4,7 @@ import styles from './index.module.scss';
 import lighting from '../../../../static/images/lighting.png';
 import addressIcon from '../../../../static/images/address_icon.png';
 import pvImg from '../../../../static/images/pv.png';
+import ballImg from '../../../../static/images/ball.png';
 import * as echarts from 'echarts';
 import { farmlandEfficiency } from '@/static/js/echartsFarmland';
 
@@ -55,7 +56,40 @@ const FarmlandTop = () => {
         <div className={styles.verticalGap} />
 
         <div className={styles.ball}>
-          当日发电量
+          <div className={styles.ballItem}>
+            <div>
+              <img src={ballImg} alt="ball" />
+            </div>
+            <div className={styles.ballDes}>
+              <div>当日发电量</div>
+              <div>98.52kwh</div>
+            </div>
+          </div>
+
+          <div className={styles.levelGap} />
+
+          <div className={styles.ballItem}>
+            <div>
+              <img src={ballImg} alt="ball" />
+            </div>
+            <div className={styles.ballDes}>
+              <div>当月发电量</div>
+              <div>98.52kwh</div>
+            </div>
+          </div>
+
+          <div className={styles.levelGap} />
+
+          <div className={styles.ballItem}>
+            <div>
+              <img src={ballImg} alt="ball" />
+            </div>
+            <div className={styles.ballDes}>
+              <div>总发电量</div>
+              <div>98.52kwh</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
