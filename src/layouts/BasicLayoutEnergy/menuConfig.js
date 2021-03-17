@@ -4,46 +4,17 @@ import healthMonitoring from './images/healthMonitoring.png';
 import dataAnalysis from './images/dataAnalysis.png';
 import keyAlarm from './images/keyAlarm.png';
 
-
 const headerMenuConfig = [];
 const asideMenuConfig = [
   {
-    name: '一键报警',
-    path: '/',
-    // icon: 'toggle-right',
-    imageIcon: keyAlarm,
-    children: [
-      {
-        name: '预警信息管理',
-        path: '/warning/info',
-        imageIcon: warningInfo,
-      },
-      {
-        name: '健康监控',
-        path: '/health/monitoring',
-        imageIcon: healthMonitoring,
-      },
-      {
-        name: '视频监控',
-        path: '/video/monitoring',
-        imageIcon: videoMonitoring,
-      },
-      {
-        name: '数据分析',
-        path: '/data/analysis',
-        imageIcon: dataAnalysis,
-      },
-    ],
-  },
-  {
     name: '智慧能源',
-    path: '/',
+    path: '/energy',
     // icon: 'toggle-right',
     imageIcon: keyAlarm,
     children: [
       {
         name: '农田光伏',
-        path: '/list/table/filter',
+        path: '/energy/list/',
         imageIcon: warningInfo,
       },
       {
@@ -60,6 +31,16 @@ const asideMenuConfig = [
         name: '入户光伏',
         path: '/data',
         imageIcon: dataAnalysis,
+      },
+      {
+        name: '充电桩',
+        path: '/data',
+        imageIcon: warningInfo,
+      },
+      {
+        name: '植物工厂',
+        path: '/data',
+        imageIcon: healthMonitoring,
       },
     ],
   },

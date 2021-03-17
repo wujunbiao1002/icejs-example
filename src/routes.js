@@ -1,9 +1,11 @@
 import { lazy } from 'ice';
 
 import UserLayout from '@/layouts/UserLayout';
-import BasicLayout from '@/layouts/BasicLayout';
+import BasicLayoutAlarm from '@/layouts/BasicLayoutAlarm';
+import BasicLayoutEnergy from '@/layouts/BasicLayoutEnergy';
 
 // 应用路由
+const Exception = lazy(() => import('@/components/Exception'));
 const Login = lazy(() => import('@/pages/Login'));
 const Register = lazy(() => import('@/pages/Register'));
 const WarningInfo = lazy(() => import('@/pages/WarningInfo'));
@@ -28,11 +30,14 @@ const routerConfig = [
         path: '/',
         redirect: '/user/login',
       },
+      {
+        component: Exception,
+      },
     ],
   },
   {
-    path: '/',
-    component: BasicLayout,
+    path: '/alarm',
+    component: BasicLayoutAlarm,
     children: [
       {
         path: '/warning/info',
@@ -52,7 +57,37 @@ const routerConfig = [
       },
       {
         path: '/',
-        redirect: '/warning/info',
+        redirect: '/alarm/warning/info',
+      },
+    ],
+  },
+  {
+    path: '/energy',
+    component: BasicLayoutEnergy,
+    children: [
+      {
+        path: '/energy',
+        component: Exception,
+      },
+      {
+        path: '/health/monitoring',
+        component: Exception,
+      },
+      {
+        path: '/video/monitoring',
+        component: Exception,
+      },
+      {
+        path: '/data/analysis',
+        component: Exception,
+      },
+      {
+        path: '/exception',
+        component: Exception,
+      },
+      {
+        path: '/',
+        redirect: '/energy/energy',
       },
     ],
   },

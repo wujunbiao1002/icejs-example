@@ -182,7 +182,7 @@ class WarningCharts extends React.Component {
 
     setTimeout(() => {
       this.loadRateChart();
-    }, 100);
+    }, 1000);
   };
 
   disabledDate = function (date, view) {

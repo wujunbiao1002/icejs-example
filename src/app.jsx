@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { runApp, logger } from 'ice';
+import { runApp, logger, getSearchParams } from 'ice';
 import { Message } from '@alifd/next';
 import LocaleProvider from '@/components/LocaleProvider';
 import { getLocale } from '@/utils/locale';
 import LoadingProvider from '@/components/LoadingProvider';
+import Exception from '@/components/Exception';
 
 const locale = getLocale();
 const appConfig = {
@@ -64,9 +65,6 @@ const appConfig = {
               case 504:
                 message = '网络超时';
                 break;
-              case 505:
-                message = 'HTTP版本不受支持';
-                break;
               default:
                 message = `连接出错(${response.data.status})!`;
             }
@@ -92,6 +90,38 @@ const appConfig = {
     fallback: <LoadingProvider />,
   },
   app: {
+    getInitialData: async () => {
+      const searchParams = getSearchParams();
+      logger.debug('app');
+      logger.debug(searchParams);
+      // 模拟服务端返回的数据
+      // const data = await request('/api/auth');
+      // const { role, starPermission, followPermission } = data;
+
+      // 约定权限必须返回一个 auth 对象
+      // 返回的每个值对应一条权限
+      // return {
+      //   auth: {
+      //     superAdmin: role === 'superAdmin',
+      //     admin: role === 'admin',
+      //     guest: role === 'guest',
+      //     starRepo: starPermission,
+      //     followRepo: followPermission,
+      //   },
+      // };
+      return {
+        auth: {
+          admin: true,
+          guest: false,
+        },
+      };
+    },
+    auth: {
+      // 可选的，设置无权限时的展示组件，默认为 null
+      NoAuthFallback: () => <Exception statusCode={'401'} description={'无访问权限'} />,
+      // 或者传递一个函数组件
+      // NoAuthFallback: () => <div>没有权限..</div>
+    },
     rootId: 'ice-container',
     addProvider: ({ children }) => <LocaleProvider locale={locale}>{children}</LocaleProvider>,
   },
