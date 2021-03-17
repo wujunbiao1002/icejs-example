@@ -6,8 +6,10 @@ import styles from './index.module.scss';
 import * as echarts from 'echarts';
 import { warning, age } from '@/static/js/echartsStatistics';
 import { logger } from 'ice';
+import moment from 'moment';
 
 const { RangePicker } = DatePicker;
+const currentDate = moment();
 let rateInit;
 let ageInit;
 
@@ -51,7 +53,7 @@ class WarningCharts extends React.Component {
     ageInit.setOption(age);
   }
 
-  creatData = (startDate, endDate) => {
+  creatData = (startDate, endDate, isRange) => {
     let _dt1 = new Date(startDate);
     const _dt2 = new Date(endDate);
     const dt1 = _dt1.getTime();
@@ -68,14 +70,27 @@ class WarningCharts extends React.Component {
     oxygenList.push(this.getRandom(4, 6));
     rateList.push(this.getRandom(1, 3));
 
-    for (let i = 1; i <= day; i++) {
-      _dt1 = _dt1.setDate(_dt1.getDate() - 1);
-      _dt1 = new Date(_dt1);
-      dateList.push(this.formatDate(_dt1));
-      bloodPressureList.push(this.getRandom(3, 5));
-      callingList.push(this.getRandom(5, 8));
-      oxygenList.push(this.getRandom(4, 6));
-      rateList.push(this.getRandom(1, 3));
+    // 日期选择框的时间往后+1
+    if (isRange) {
+      for (let i = 1; i <= day; i++) {
+        _dt1 = _dt1.setDate(_dt1.getDate() + 1);
+        _dt1 = new Date(_dt1);
+        dateList.push(this.formatDate(_dt1));
+        bloodPressureList.push(this.getRandom(3, 5));
+        callingList.push(this.getRandom(5, 8));
+        oxygenList.push(this.getRandom(4, 6));
+        rateList.push(this.getRandom(1, 3));
+      }
+    } else {
+      for (let i = 1; i <= day; i++) {
+        _dt1 = _dt1.setDate(_dt1.getDate() - 1);
+        _dt1 = new Date(_dt1);
+        dateList.push(this.formatDate(_dt1));
+        bloodPressureList.push(this.getRandom(3, 5));
+        callingList.push(this.getRandom(5, 8));
+        oxygenList.push(this.getRandom(4, 6));
+        rateList.push(this.getRandom(1, 3));
+      }
     }
   };
   getRandom = (n, m) => {
@@ -89,13 +104,17 @@ class WarningCharts extends React.Component {
     d = d < 10 ? (`0${ d}`) : d;
     return `${y }-${ m }-${ d}`;
   };
-  handleRangeTime = (val) => {
+  handleRangeTime = (val, isRange = true) => {
     const startDate = val[0];
     const endDate = val[1];
     logger.debug(startDate);
     logger.debug(endDate);
-    this.creatData(startDate, endDate);
-    this.initChart();
+    if (isRange) {
+      this.creatData(startDate, endDate, isRange);
+    } else {
+      this.creatData(startDate, endDate, false);
+    }
+    this.initChart(isRange);
   };
 
   handleTimeClick = (option, e, time) => {
@@ -126,7 +145,7 @@ class WarningCharts extends React.Component {
       startDate = this.getBeforeDate(0);
       endDate = this.getBeforeDate(365);
     }
-    this.handleRangeTime([startDate, endDate]);
+    this.handleRangeTime([startDate, endDate], false);
   }
 
   getBeforeDate = (n) => {
@@ -150,8 +169,12 @@ class WarningCharts extends React.Component {
     return s;
   }
 
-  initChart = () => {
-    warning.xAxis[0].data = dateList.reverse();
+  initChart = (isRange) => {
+    if (isRange) {
+      warning.xAxis[0].data = dateList;
+    } else {
+      warning.xAxis[0].data = dateList.reverse();
+    }
     warning.series[0].data = callingList;
     warning.series[1].data = rateList;
     warning.series[2].data = bloodPressureList;
@@ -160,6 +183,22 @@ class WarningCharts extends React.Component {
     setTimeout(() => {
       this.loadRateChart();
     }, 100);
+  };
+
+  disabledDate = function (date, view) {
+    switch (view) {
+      case 'date':
+        return date.valueOf() >= currentDate.valueOf();
+      case 'year':
+        return date.year() > currentDate.year();
+      case 'month':
+        return (
+          date.year() * 100 + date.month() >
+          currentDate.year() * 100 + currentDate.month()
+        );
+      default:
+        return false;
+    }
   };
 
 
@@ -173,10 +212,12 @@ class WarningCharts extends React.Component {
                 异常预警统计
               </div>
               <div className={styles.search} id="search">
-                <span onClick={(e) => { this.handleTimeClick('week', e, 1); }}>本周</span>
-                <span onClick={(e) => { this.handleTimeClick('month', e, 1); }}>本月</span>
-                <span onClick={(e) => { this.handleTimeClick('year', e, 1); }}>本年</span>
-                <div className={styles.rangePadding}><RangePicker /></div>
+                <span onClick={(e) => { this.handleTimeClick('week', e, 1); }}>近一周</span>
+                <span onClick={(e) => { this.handleTimeClick('month', e, 1); }}>近一月</span>
+                <span onClick={(e) => { this.handleTimeClick('year', e, 1); }}>近一年</span>
+                <div className={styles.rangePadding}>
+                  <RangePicker disabledDate={this.disabledDate} onOk={this.handleRangeTime} />
+                </div>
               </div>
             </div>
           </div>
