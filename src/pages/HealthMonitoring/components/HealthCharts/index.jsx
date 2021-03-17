@@ -8,6 +8,7 @@ import moment from 'moment';
 
 moment.locale('zh-cn');
 const { RangePicker } = DatePicker;
+const currentDate = moment();
 const heartRateChart = {
   chart: null,
   option: Object.assign({}, rate),
@@ -96,6 +97,23 @@ const HealthCharts = (props) => {
     d = d < 10 ? (`0${ d}`) : d;
     return `${y }-${ m }-${ d}`;
   };
+
+  const disabledDate = function (date, view) {
+    switch (view) {
+      case 'date':
+        return date.valueOf() >= currentDate.valueOf();
+      case 'year':
+        return date.year() > currentDate.year();
+      case 'month':
+        return (
+          date.year() * 100 + date.month() >
+          currentDate.year() * 100 + currentDate.month()
+        );
+      default:
+        return false;
+    }
+  };
+
   const onOkRangePicker = (val) => {
     const startDate = val[0].format('YYYY-MM-DD');
     const endDate = val[1].format('YYYY-MM-DD');
@@ -176,7 +194,7 @@ const HealthCharts = (props) => {
         <div className={styles.centerGap} />
         <div className={styles.rightContent}>
           <div className={styles.searchWrap}>
-            <RangePicker onOk={onOkRangePicker} />
+            <RangePicker disabledDate={disabledDate} onOk={onOkRangePicker} />
           </div>
 
           <div className={styles.rightGap} />
