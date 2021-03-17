@@ -16,7 +16,15 @@
   padding-right: 10px;
 }
 
-.centerWord {
+.search span:hover {
+  cursor: pointer;
+}
+
+.search span {
   padding-right: 8px;
+}
+
+.rangePadding {
+  margin-left: 10px;
 }
 

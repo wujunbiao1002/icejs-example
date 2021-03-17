@@ -15,20 +15,26 @@ const { Row, Col } = Grid;
 
 const FormGroup = () => {
   return (
-    <ResponsiveGrid gap={20}>
+    <ResponsiveGrid
+      gap={20}
+    >
       <Cell colSpan={12}>
-        <PageHeader
-          // title=""
-          // description=""
-          breadcrumbs={[
-            {
-              name: '系统首页',
-            },
-            {
-              name: '数据分析',
-            },
-          ]}
-        />
+        <div className="analysis-header">
+          <PageHeader
+            style={{
+              margin: '0',
+              paddingBottom: '0',
+            }}
+            breadcrumbs={[
+              {
+                name: '系统首页',
+              },
+              {
+                name: '数据分析',
+              },
+            ]}
+          />
+        </div>
       </Cell>
 
       <Cell colSpan={12}>
@@ -79,14 +85,14 @@ const FormGroup = () => {
               </div>
               <Row>
                 <Col span="6">
-                  <div className="warning-num">29</div>
+                  <div className="warning-num">53</div>
                   <div className="warning-title">
                     <img src={dealing} alt="img" />
                     <span>本月预警数</span>
                   </div>
                 </Col>
                 <Col span="6">
-                  <div className="warning-num">9</div>
+                  <div className="warning-num">44</div>
                   <div className="warning-title">
                     <img src={handled} alt="img" />
                     <span>本月已处理数</span>

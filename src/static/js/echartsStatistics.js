@@ -3,7 +3,7 @@ import { gridNumFun, setAxisTooltip, setXAxis, setYAxis } from '@/static/js/echa
 // 数据检测--异常数据统计
 export const warning = {
   grid: {
-    ...gridNumFun('10%', '4%', '3%', '12%'),
+    ...gridNumFun('8%', '6%', '3%', '12%'),
   },
   tooltip: {
     ...setAxisTooltip,
@@ -26,60 +26,6 @@ export const warning = {
     data: [462, 654, 356, 239],
   }],
   series: [
-    {
-      name: '血氧异常',
-      type: 'line',
-      smooth: true,
-      symbol: 'none',
-      sampling: 'average',
-      itemStyle: {
-        color: '#d5db00',
-      },
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [{
-            offset: 0,
-            color: 'rgb(246,249,207)', // 0% 处的颜色
-          }, {
-            offset: 1,
-            color: 'rgba(246,249,207, 0.3)', // 100% 处的颜色
-          }],
-        },
-      },
-      data: [218, 182, 190, 210, 184, 219, 201, 199],
-    },
-    {
-      name: '血压异常',
-      type: 'line',
-      smooth: true,
-      symbol: 'none',
-      sampling: 'average',
-      itemStyle: {
-        color: '#82cb5e',
-      },
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: [{
-            offset: 0,
-            color: 'rgb(249,253,245,1)', // 0% 处的颜色
-          }, {
-            offset: 1,
-            color: 'rgba(249,253,245, 0.3)', // 100% 处的颜色
-          }],
-        },
-      },
-      data: [128, 182, 190, 98, 83, 129, 99, 123],
-    },
     {
       name: '紧急呼叫',
       type: 'line',
@@ -134,6 +80,60 @@ export const warning = {
       },
       data: [108, 82, 90, 100, 84, 119, 99, 80],
     },
+    {
+      name: '血压异常',
+      type: 'line',
+      smooth: true,
+      symbol: 'none',
+      sampling: 'average',
+      itemStyle: {
+        color: '#82cb5e',
+      },
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [{
+            offset: 0,
+            color: 'rgb(249,253,245,1)', // 0% 处的颜色
+          }, {
+            offset: 1,
+            color: 'rgba(249,253,245, 0.3)', // 100% 处的颜色
+          }],
+        },
+      },
+      data: [128, 182, 190, 98, 83, 129, 99, 123],
+    },
+    {
+      name: '血氧异常',
+      type: 'line',
+      smooth: true,
+      symbol: 'none',
+      sampling: 'average',
+      itemStyle: {
+        color: '#d5db00',
+      },
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [{
+            offset: 0,
+            color: 'rgb(246,249,207)', // 0% 处的颜色
+          }, {
+            offset: 1,
+            color: 'rgba(246,249,207, 0.3)', // 100% 处的颜色
+          }],
+        },
+      },
+      data: [218, 182, 190, 210, 184, 219, 201, 199],
+    },
   ],
 };
 
@@ -146,7 +146,7 @@ export const age = {
     ...gridNumFun('2%', '4%', '3%', '3%'),
   },
   xAxis: [{
-    data: ['50~59', '60~69', '60~69', '60~69', '60~69'],
+    data: ['50~59', '60~69', '70~79', '80~89', '90岁以上'],
     ...setXAxis,
   }],
   yAxis: {
@@ -175,7 +175,7 @@ export const age = {
           },
         },
       },
-      data: [610, 822, 500, 210, 88],
+      data: [45, 72, 30, 22, 12],
     },
   ],
 };
@@ -183,7 +183,7 @@ export const age = {
 // 紧急呼叫统计
 export const callingStatistics = {
   title: {
-    text: '总预警数: 4837',
+    text: '总预警数: 181',
     bottom: '40',
     left: 'center',
     textStyle: {
@@ -201,7 +201,7 @@ export const callingStatistics = {
       center: ['50%', '42%'],
       data: [
         {
-          value: 3399,
+          value: 126,
           name: 'invisible',
           tooltip: {
             show: false,
@@ -219,7 +219,7 @@ export const callingStatistics = {
           },
         },
         {
-          value: 1438,
+          value: 55,
           name: '紧急呼叫',
           label: {
             position: 'center',
@@ -249,7 +249,7 @@ export const callingStatistics = {
 // 心率异常统计
 export const rateStatistics = {
   title: {
-    text: '总预警数: 2000',
+    text: '总预警数: 181',
     bottom: '40',
     left: 'center',
     textStyle: {
@@ -267,7 +267,7 @@ export const rateStatistics = {
       center: ['50%', '42%'],
       data: [
         {
-          value: 1200,
+          value: 146,
           name: 'invisible',
           tooltip: {
             show: false,
@@ -285,7 +285,7 @@ export const rateStatistics = {
           },
         },
         {
-          value: 800,
+          value: 35,
           name: '心率异常',
           label: {
             position: 'center',
@@ -314,7 +314,7 @@ export const rateStatistics = {
 // 血压异常统计
 export const pressureStatistics = {
   title: {
-    text: '总预警数: 1500',
+    text: '总预警数: 181',
     bottom: '40',
     left: 'center',
     textStyle: {
@@ -332,7 +332,7 @@ export const pressureStatistics = {
       center: ['50%', '42%'],
       data: [
         {
-          value: 500,
+          value: 139,
           name: 'invisible',
           tooltip: {
             show: false,
@@ -350,7 +350,7 @@ export const pressureStatistics = {
           },
         },
         {
-          value: 1000,
+          value: 42,
           name: '血压异常',
           label: {
             position: 'center',
@@ -379,7 +379,7 @@ export const pressureStatistics = {
 // 血氧异常统计
 export const oxygenStatistics = {
   title: {
-    text: '总预警数: 1000',
+    text: '总预警数: 181',
     bottom: '40',
     left: 'center',
     textStyle: {
@@ -397,7 +397,7 @@ export const oxygenStatistics = {
       center: ['50%', '42%'],
       data: [
         {
-          value: 500,
+          value: 135,
           name: 'invisible',
           tooltip: {
             show: false,
@@ -415,7 +415,7 @@ export const oxygenStatistics = {
           },
         },
         {
-          value: 500,
+          value: 46,
           name: '血氧异常',
           label: {
             position: 'center',
