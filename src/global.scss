@@ -74,6 +74,12 @@ body {
   background: #f5f5f5;
 }
 
+.analysis-header {
+  background: #fff;
+  padding-bottom: 20px;
+
+}
+
 .analysis-top, .analysis-center {
   display: flex;
 }
@@ -117,3 +123,9 @@ body {
 }
 
 // 数据分析
+
+// 不可点击
+.notClick {
+  pointer-events: none;
+}
+

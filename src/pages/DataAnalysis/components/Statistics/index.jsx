@@ -15,6 +15,9 @@ class Statistics extends React.Component {
 
   resizeCharts = () => {
     callingInit.resize();
+    rateInit.resize();
+    pressureInit.resize();
+    oxygenInit.resize();
   }
 
   componentDidMount() {
