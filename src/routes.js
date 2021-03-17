@@ -6,13 +6,20 @@ import BasicLayoutEnergy from '@/layouts/BasicLayoutEnergy';
 
 // 应用路由
 const Exception = lazy(() => import('@/components/Exception'));
+// 一键报警
 const Login = lazy(() => import('@/pages/Login'));
 const Register = lazy(() => import('@/pages/Register'));
-const WarningInfo = lazy(() => import('@/pages/WarningInfo'));
-const DataAnalysis = lazy(() => import('@/pages/DataAnalysis'));
-const HealthMonitoring = lazy(() => import('@/pages/HealthMonitoring'));
-const VideoMonitoring = lazy(() => import('@/pages/VideoMonitoring'));
-const FarmlandPhotovoltaic = lazy(() => import('@/pages/FarmlandPhotovoltaic'));
+const WarningInfo = lazy(() => import('@/pages/Alarm/WarningInfo'));
+const DataAnalysis = lazy(() => import('@/pages/Alarm/DataAnalysis'));
+const HealthMonitoring = lazy(() => import('@/pages/Alarm/HealthMonitoring'));
+const VideoMonitoring = lazy(() => import('@/pages/Alarm/VideoMonitoring'));
+// 智慧能源
+const ChargingPile = lazy(() => import('@/pages/Energy/ChargingPile'));
+const FarmlandPhotovoltaic = lazy(() => import('@/pages/Energy/FarmlandPhotovoltaic'));
+const HomePhotovoltaic = lazy(() => import('@/pages/Energy/HomePhotovoltaic'));
+const PlantFactory = lazy(() => import('@/pages/Energy/PlantFactory'));
+const RooftopPhotovoltaic = lazy(() => import('@/pages/Energy/RooftopPhotovoltaic'));
+const SurfacePhotovoltaic = lazy(() => import('@/pages/Energy/SurfacePhotovoltaic'));
 
 const routerConfig = [
   {
@@ -56,11 +63,6 @@ const routerConfig = [
         path: '/data/analysis',
         component: DataAnalysis,
       },
-      // 智慧能源
-      {
-        path: '/farmland/photovoltaic',
-        component: FarmlandPhotovoltaic,
-      },
       {
         path: '/',
         redirect: '/alarm/warning/info',
@@ -72,30 +74,38 @@ const routerConfig = [
     component: BasicLayoutEnergy,
     children: [
       {
-        path: '/energy',
-        component: Exception,
+        path: '/farmland/photovoltaic',
+        component: FarmlandPhotovoltaic,
       },
       {
-        path: '/health/monitoring',
-        component: Exception,
+        path: '/surface/photovoltaic',
+        component: SurfacePhotovoltaic,
       },
       {
-        path: '/video/monitoring',
-        component: Exception,
+        path: '/rooftop/photovoltaic',
+        component: RooftopPhotovoltaic,
       },
       {
-        path: '/data/analysis',
-        component: Exception,
+        path: '/home/photovoltaic',
+        component: HomePhotovoltaic,
       },
       {
-        path: '/exception',
-        component: Exception,
+        path: '/charging/pile',
+        component: ChargingPile,
+      },
+      {
+        path: '/plant/factory',
+        component: PlantFactory,
       },
       {
         path: '/',
-        redirect: '/energy/energy',
+        redirect: '/energy/farmland/photovoltaic',
       },
     ],
+  },
+  {
+    path: '/',
+    component: Exception,
   },
 ];
 export default routerConfig;

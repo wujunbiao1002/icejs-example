@@ -8,7 +8,7 @@ const headerMenuConfig = [];
 const asideMenuConfig = [
   {
     name: '一键报警',
-    path: '/alarm',
+    path: '/',
     // icon: 'toggle-right',
     imageIcon: keyAlarm,
     children: [
