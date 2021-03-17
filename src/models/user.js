@@ -1,4 +1,5 @@
-import { request } from 'ice';
+import userService from '@/services/user';
+import { logger } from 'ice';
 
 export default {
   state: {
@@ -9,15 +10,13 @@ export default {
   },
   effects: (dispatch) => ({
     async fetchUserProfile() {
-      const res = await request('/api/profile');
-
-      if (res.status === 'SUCCESS') {
-        dispatch.user.update(res.data);
-      }
+      this.update(userService.getUser().data);
     },
   }),
   reducers: {
     update(prevState, payload) {
+      logger.debug(prevState);
+      logger.debug(payload);
       return { ...prevState, ...payload };
     },
   },
