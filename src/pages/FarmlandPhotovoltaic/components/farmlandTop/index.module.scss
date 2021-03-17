@@ -1,0 +1,67 @@
+@import '../../../../../node_modules/@alifd/next/variables';
+
+.farmlandTop {
+  margin: 10px;
+  display: flex;
+  justify-content: stretch;
+  background: #fff;
+}
+
+.farmlandContent {
+  display: inline-flex;
+  background-color: #fff;
+}
+
+.verticalGap {
+  width: 15px;
+  background-color: #f3f6fb;
+}
+
+.contentLeft {
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.addressTitle {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 25px;
+}
+
+.addressWrap {
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+.addressName {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.addressDetailName {
+  margin-top: -4px;
+}
+
+.systemStatusWrap {
+  width: 100%;
+  font-size: 16px;
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 30px 20px 5px;
+}
+
+.systemStatus {
+  color: #2062e1;
+}
+
+// 逆变器效率
+.efficiency {
+  background-color: #fff;
+  width: 20%;
+  padding: 20px 0;
+}

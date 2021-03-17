@@ -43,7 +43,7 @@ const asideMenuConfig = [
     children: [
       {
         name: '农田光伏',
-        path: '/list/table/filter',
+        path: '/farmland/photovoltaic',
         imageIcon: warningInfo,
       },
       {

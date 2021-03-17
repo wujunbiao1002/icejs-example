@@ -10,6 +10,7 @@ const WarningInfo = lazy(() => import('@/pages/WarningInfo'));
 const DataAnalysis = lazy(() => import('@/pages/DataAnalysis'));
 const HealthMonitoring = lazy(() => import('@/pages/HealthMonitoring'));
 const VideoMonitoring = lazy(() => import('@/pages/VideoMonitoring'));
+const FarmlandPhotovoltaic = lazy(() => import('@/pages/FarmlandPhotovoltaic'));
 
 const routerConfig = [
   {
@@ -49,6 +50,11 @@ const routerConfig = [
       {
         path: '/data/analysis',
         component: DataAnalysis,
+      },
+      // 智慧能源
+      {
+        path: '/farmland/photovoltaic',
+        component: FarmlandPhotovoltaic,
       },
       {
         path: '/',
