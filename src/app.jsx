@@ -3,6 +3,7 @@ import { runApp, logger } from 'ice';
 import { Message } from '@alifd/next';
 import LocaleProvider from '@/components/LocaleProvider';
 import { getLocale } from '@/utils/locale';
+import LoadingProvider from '@/components/LoadingProvider';
 
 const locale = getLocale();
 const appConfig = {
@@ -86,6 +87,9 @@ const appConfig = {
   },
   logger: {
     smartLoglevel: true,
+  },
+  router: {
+    fallback: <LoadingProvider />,
   },
   app: {
     rootId: 'ice-container',

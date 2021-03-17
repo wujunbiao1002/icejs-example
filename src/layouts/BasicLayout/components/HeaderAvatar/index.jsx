@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Button, Overlay, Menu, Icon } from '@alifd/next';
 import styles from './index.module.scss';
-import avatarImg from '../../Images/avatar.png';
+import avatarImg from '../../images/avatar.png';
 
 const { Item } = Menu;
 const { Popup } = Overlay;

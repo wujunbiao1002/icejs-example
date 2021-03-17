@@ -7,7 +7,7 @@ import SolutionLink from './components/SolutionLink';
 import HeaderAvatar from './components/HeaderAvatar';
 import Logo from './components/Logo';
 import Footer from './components/Footer';
-import heardImg from './Images/heardImg.png';
+import heardImg from './images/heardImg.png';
 
 (function () {
   const throttle = function (type, name, obj = window) {
