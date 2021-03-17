@@ -1,10 +1,42 @@
 export default {
   // 同时支持 GET 和 POST
-  '/api/users/1': { data: { name: '桔梗' } },
-
-  // 支持标准 HTTP
-  'GET /api/users': { users: [1, 2] },
-  'DELETE /api/users': { users: [1, 2] },
+  'GET /api/users/:id': (req, res) => {
+    const { id } = req.params;
+    if (id === 1) {
+      res.send({
+        status: 200,
+        data: {
+          name: '桔梗',
+          userid: '1',
+          department: '研发部门',
+          avatar: 'x.png',
+        },
+        message: 'OK',
+      });
+    } else if (id === 2) {
+      res.send({
+        status: 500,
+        data: {
+          name: '桔梗',
+          userid: '1',
+          department: '研发部门',
+          avatar: 'x.png',
+        },
+        message: 'OK',
+      });
+    } else {
+      res.send({
+        status: 401,
+        data: {
+          name: '桔梗',
+          userid: '1',
+          department: '研发部门',
+          avatar: 'x.png',
+        },
+        message: 'OK',
+      });
+    }
+  },
 
   // 支持参数
   'POST /api/users/:id': (req, res) => {
@@ -12,3 +44,4 @@ export default {
     res.send({ id });
   },
 };
+
