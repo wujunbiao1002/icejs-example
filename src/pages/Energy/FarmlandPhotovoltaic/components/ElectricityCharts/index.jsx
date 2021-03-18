@@ -1,17 +1,13 @@
 import React from 'react';
-import {
-  DatePicker,
-} from '@alifd/next';
 import styles from './index.module.scss';
 import * as echarts from 'echarts';
-import { warning, age } from '@/static/js/echartsStatistics';
+import { generatingCapacity, farmlandElectricityPower } from '@/static/js/echartsFarmland';
 import { logger } from 'ice';
-import moment from 'moment';
+import { DatePicker } from '@alifd/next';
 
 const { RangePicker } = DatePicker;
-const currentDate = moment();
 let rateInit;
-let ageInit;
+let generatingCapacityInit;
 
 let dateList = [];
 let bloodPressureList = [];
@@ -20,20 +16,20 @@ let oxygenList = [];
 let rateList = [];
 
 // eslint-disable-next-line @iceworks/best-practices/recommend-functional-component
-class WarningCharts extends React.Component {
+class ElectricityCharts extends React.Component {
   state = {
   };
 
   resizeCharts = () => {
     rateInit.resize();
-    ageInit.resize();
+    generatingCapacityInit.resize();
   }
 
   componentDidMount() {
     const dom = document.getElementById('search').querySelector('span');
     this.handleTimeClick('week', dom, 0);
     this.loadRateChart();
-    this.loadAgeChart();
+    this.loadGeneratingCapacityChart();
     window.addEventListener('resize', this.resizeCharts);
   }
 
@@ -41,16 +37,16 @@ class WarningCharts extends React.Component {
     window.removeEventListener('resize', this.resizeCharts);
   }
 
-  // 心率
+  // 发电功率
   loadRateChart = () => {
-    rateInit = echarts.init(document.getElementById('warning'));
-    rateInit.setOption(warning);
+    rateInit = echarts.init(document.getElementById('electricityCapacity'));
+    rateInit.setOption(farmlandElectricityPower);
   }
 
-  // 年龄
-  loadAgeChart = () => {
-    ageInit = echarts.init(document.getElementById('age'));
-    ageInit.setOption(age);
+  // 发电量
+  loadGeneratingCapacityChart = () => {
+    generatingCapacityInit = echarts.init(document.getElementById('productionCapacity'));
+    generatingCapacityInit.setOption(generatingCapacity);
   }
 
   creatData = (startDate, endDate, isRange) => {
@@ -171,34 +167,14 @@ class WarningCharts extends React.Component {
 
   initChart = (isRange) => {
     if (isRange) {
-      warning.xAxis[0].data = dateList;
+      farmlandElectricityPower.xAxis[0].data = dateList;
     } else {
-      warning.xAxis[0].data = dateList.reverse();
+      farmlandElectricityPower.xAxis[0].data = dateList.reverse();
     }
-    warning.series[0].data = callingList;
-    warning.series[1].data = rateList;
-    warning.series[2].data = bloodPressureList;
-    warning.series[3].data = oxygenList;
+    farmlandElectricityPower.series[0].data = callingList;
 
     this.loadRateChart();
   };
-
-  disabledDate = function (date, view) {
-    switch (view) {
-      case 'date':
-        return date.valueOf() >= currentDate.valueOf();
-      case 'year':
-        return date.year() > currentDate.year();
-      case 'month':
-        return (
-          date.year() * 100 + date.month() >
-          currentDate.year() * 100 + currentDate.month()
-        );
-      default:
-        return false;
-    }
-  };
-
 
   render() {
     return (
@@ -207,19 +183,19 @@ class WarningCharts extends React.Component {
           <div className="analysis-warning">
             <div className={styles.titleWrap}>
               <div className={styles.nameTitle}>
-                异常预警统计
+                发电量（KWH）
               </div>
-              <div className={styles.search} id="search">
-                <span onClick={(e) => { this.handleTimeClick('week', e, 1); }}>近一周</span>
-                <span onClick={(e) => { this.handleTimeClick('month', e, 1); }}>近一月</span>
-                <span onClick={(e) => { this.handleTimeClick('year', e, 1); }}>近一年</span>
-                <div className={styles.rangePadding}>
-                  <RangePicker disabledDate={this.disabledDate} onOk={this.handleRangeTime} />
-                </div>
+            </div>
+            <div className={styles.leftSearch} id="searchOutput">
+              <span onClick={(e) => { this.handleTimeClick('week', e, 1); }}>近一周</span>
+              <span onClick={(e) => { this.handleTimeClick('month', e, 1); }}>近一月</span>
+              <span onClick={(e) => { this.handleTimeClick('year', e, 1); }}>近一年</span>
+              <div className={styles.rangePadding}>
+                <RangePicker disabledDate={this.disabledDate} onOk={this.handleRangeTime} />
               </div>
             </div>
           </div>
-          <div id="warning" style={{ width: '100%', height: '300px' }} />
+          <div id="productionCapacity" style={{ width: '100%', height: '220px' }} />
         </div>
 
         <div className="centerGap" />
@@ -228,15 +204,20 @@ class WarningCharts extends React.Component {
           <div className="analysis-warning">
             <div className={styles.titleWrap}>
               <div className={styles.nameTitle}>
-                年龄段分布
+                发电功率（KW）
+              </div>
+              <div className={styles.search} id="search">
+                <span onClick={(e) => { this.handleTimeClick('week', e, 1); }}>近一周</span>
+                <span onClick={(e) => { this.handleTimeClick('month', e, 1); }}>近一月</span>
+                <span onClick={(e) => { this.handleTimeClick('year', e, 1); }}>近一年</span>
               </div>
             </div>
           </div>
-          <div id="age" style={{ width: '100%', height: '300px' }} />
+          <div id="electricityCapacity" style={{ width: '100%', height: '280px' }} />
         </div>
       </div>
     );
   }
 }
 
-export default WarningCharts;
+export default ElectricityCharts;

@@ -129,3 +129,51 @@ body {
   pointer-events: none;
 }
 
+.verticalGap {
+  width: 20px;
+  background-color: #f5f5f5;
+}
+
+.levelGap {
+  height: 20px;
+  background-color: #f5f5f5;
+}
+
+
+// 农田光伏
+.farmland-center-content {
+  background-color: #fff;
+  display: flex;
+  justify-content: stretch;
+}
+
+.top-border-bottom {
+  border-bottom: 1px solid #eee;
+}
+
+.farmland-center-content-item {
+  width: 25%;
+  padding: 20px 20px 15px;
+  border-left: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.farmland-center-content-item-img {
+  text-align: center;
+  width: 50%;
+}
+
+.farmland-center-content-item:first-child {
+  border-left: none;
+}
+
+.farmland-center-content-item-des-title {
+  font-size: 16px;
+}
+
+.farmland-center-content-item-des-num {
+  color: #2062e1;
+  padding-top: 8px;
+}

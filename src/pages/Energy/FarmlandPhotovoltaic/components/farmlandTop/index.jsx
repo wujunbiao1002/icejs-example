@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import styles from './index.module.scss';
+import ballImg from '../../../../../static/images/ball.png';
 import lighting from '../../../../../static/images/lighting.png';
 import addressIcon from '../../../../../static/images/address_icon.png';
 import pvImg from '../../../../../static/images/pv.png';
@@ -42,20 +43,56 @@ const FarmlandTop = () => {
               <div className={styles.systemStatus}>&bull;&nbsp;运行</div>
             </div>
           </div>
-          <img src={pvImg} alt="pv" />
+
+          <div className={styles.lightingImg}>
+            <img src={pvImg} alt="pv" />
+          </div>
         </div>
 
         <div className={styles.verticalGap} />
 
         <div className={styles.efficiency}>
           <div className="analysis-title">逆变器效率</div>
-          <div id="farmlandEfficiency" style={{ width: '100%', height: '300px' }} />
+          <div id="farmlandEfficiency" style={{ width: '100%', height: '220px' }} />
         </div>
 
         <div className={styles.verticalGap} />
 
         <div className={styles.ball}>
-          当日发电量
+          <div className={styles.ballItem}>
+            <div>
+              <img src={ballImg} alt="ball" />
+            </div>
+            <div className={styles.ballDes}>
+              <div>当日发电量</div>
+              <div>98.52kwh</div>
+            </div>
+          </div>
+
+          <div className={styles.levelGap} />
+
+          <div className={styles.ballItem}>
+            <div>
+              <img src={ballImg} alt="ball" />
+            </div>
+            <div className={styles.ballDes}>
+              <div>当月发电量</div>
+              <div>98.52kwh</div>
+            </div>
+          </div>
+
+          <div className={styles.levelGap} />
+
+          <div className={styles.ballItem}>
+            <div>
+              <img src={ballImg} alt="ball" />
+            </div>
+            <div className={styles.ballDes}>
+              <div>总发电量</div>
+              <div>98.52kwh</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

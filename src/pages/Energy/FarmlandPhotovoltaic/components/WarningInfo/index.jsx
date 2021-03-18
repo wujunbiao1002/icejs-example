@@ -1,39 +1,57 @@
 import React from 'react';
-import {
-  DatePicker,
-} from '@alifd/next';
 import styles from './index.module.scss';
 import * as echarts from 'echarts';
-import { warning, age } from '@/static/js/echartsStatistics';
+import { emissionReduction } from '@/static/js/echartsFarmland';
 import { logger } from 'ice';
-import moment from 'moment';
 
-const { RangePicker } = DatePicker;
-const currentDate = moment();
 let rateInit;
-let ageInit;
 
 let dateList = [];
-let bloodPressureList = [];
-let callingList = [];
-let oxygenList = [];
-let rateList = [];
+let emissionReductionList = [];
+const infoList = [
+  {
+    name: '小岗村铜制品工厂品工厂出现电压欠压',
+    time: '2021-03-12  10:23:10',
+  },
+  {
+    name: '小岗村铜制品工厂出现电压出现电压欠压',
+    time: '2021-03-12  10:23:10',
+  },
+  {
+    name: '小岗村铜制品工厂出现村铜制村铜制电压欠压',
+    time: '2021-03-12  10:23:10',
+  },
+  {
+    name: '小岗村铜制品工厂工厂出现电压欠压',
+    time: '2021-03-12  10:23:10',
+  },
+  {
+    name: '小岗村铜制品工厂出现出现电压欠压',
+    time: '2021-03-12  10:23:10',
+  },
+  {
+    name: '小岗村铜制品工厂出现电压欠压',
+    time: '2021-03-12  10:23:10',
+  },
+  {
+    name: '小岗村铜制品工厂出现电压欠压',
+    time: '2021-03-12  10:23:10',
+  },
+];
 
 // eslint-disable-next-line @iceworks/best-practices/recommend-functional-component
-class WarningCharts extends React.Component {
+class WarningInfo extends React.Component {
   state = {
   };
 
   resizeCharts = () => {
     rateInit.resize();
-    ageInit.resize();
   }
 
   componentDidMount() {
-    const dom = document.getElementById('search').querySelector('span');
+    const dom = document.getElementById('emissionReductionOption').querySelector('span');
     this.handleTimeClick('week', dom, 0);
     this.loadRateChart();
-    this.loadAgeChart();
     window.addEventListener('resize', this.resizeCharts);
   }
 
@@ -43,14 +61,8 @@ class WarningCharts extends React.Component {
 
   // 心率
   loadRateChart = () => {
-    rateInit = echarts.init(document.getElementById('warning'));
-    rateInit.setOption(warning);
-  }
-
-  // 年龄
-  loadAgeChart = () => {
-    ageInit = echarts.init(document.getElementById('age'));
-    ageInit.setOption(age);
+    rateInit = echarts.init(document.getElementById('emissionReduction'));
+    rateInit.setOption(emissionReduction);
   }
 
   creatData = (startDate, endDate, isRange) => {
@@ -60,15 +72,9 @@ class WarningCharts extends React.Component {
     const dt2 = _dt2.getTime();
     const day = parseInt(Math.abs(dt1 - dt2) / 1000 / 60 / 60 / 24);
     dateList = [];
-    bloodPressureList = [];
-    callingList = [];
-    oxygenList = [];
-    rateList = [];
+    emissionReductionList = [];
     dateList.push(this.formatDate(_dt1));
-    bloodPressureList.push(this.getRandom(3, 5));
-    callingList.push(this.getRandom(5, 8));
-    oxygenList.push(this.getRandom(4, 6));
-    rateList.push(this.getRandom(1, 3));
+    emissionReductionList.push(this.getRandom(40, 130));
 
     // 日期选择框的时间往后+1
     if (isRange) {
@@ -76,20 +82,14 @@ class WarningCharts extends React.Component {
         _dt1 = _dt1.setDate(_dt1.getDate() + 1);
         _dt1 = new Date(_dt1);
         dateList.push(this.formatDate(_dt1));
-        bloodPressureList.push(this.getRandom(3, 5));
-        callingList.push(this.getRandom(5, 8));
-        oxygenList.push(this.getRandom(4, 6));
-        rateList.push(this.getRandom(1, 3));
+        emissionReductionList.push(this.getRandom(40, 130));
       }
     } else {
       for (let i = 1; i <= day; i++) {
         _dt1 = _dt1.setDate(_dt1.getDate() - 1);
         _dt1 = new Date(_dt1);
         dateList.push(this.formatDate(_dt1));
-        bloodPressureList.push(this.getRandom(3, 5));
-        callingList.push(this.getRandom(5, 8));
-        oxygenList.push(this.getRandom(4, 6));
-        rateList.push(this.getRandom(1, 3));
+        emissionReductionList.push(this.getRandom(40, 130));
       }
     }
   };
@@ -118,7 +118,7 @@ class WarningCharts extends React.Component {
   };
 
   handleTimeClick = (option, e, time) => {
-    const dom = document.getElementById('search').querySelectorAll('span');
+    const dom = document.getElementById('emissionReductionOption').querySelectorAll('span');
     dom.forEach((item) => {
       item.style.color = '#999';
       item.classList.remove('notClick');
@@ -171,34 +171,30 @@ class WarningCharts extends React.Component {
 
   initChart = (isRange) => {
     if (isRange) {
-      warning.xAxis[0].data = dateList;
+      emissionReduction.xAxis.data = dateList;
     } else {
-      warning.xAxis[0].data = dateList.reverse();
+      emissionReduction.xAxis.data = dateList.reverse();
     }
-    warning.series[0].data = callingList;
-    warning.series[1].data = rateList;
-    warning.series[2].data = bloodPressureList;
-    warning.series[3].data = oxygenList;
+    emissionReduction.series[0].data = emissionReductionList;
 
     this.loadRateChart();
   };
 
-  disabledDate = function (date, view) {
-    switch (view) {
-      case 'date':
-        return date.valueOf() >= currentDate.valueOf();
-      case 'year':
-        return date.year() > currentDate.year();
-      case 'month':
-        return (
-          date.year() * 100 + date.month() >
-          currentDate.year() * 100 + currentDate.month()
-        );
-      default:
-        return false;
-    }
-  };
-
+  // 告警信息
+  getInfoList = () => {
+    return (
+      <div>
+        {
+          infoList.map((item) => (
+            <div className={styles.infoItem}>
+              <div>{ item.name }</div>
+              <div>{ item.time }</div>
+            </div>
+          ))
+        }
+      </div>
+    );
+  }
 
   render() {
     return (
@@ -207,19 +203,16 @@ class WarningCharts extends React.Component {
           <div className="analysis-warning">
             <div className={styles.titleWrap}>
               <div className={styles.nameTitle}>
-                异常预警统计
+                CO2减排量（KG）
               </div>
-              <div className={styles.search} id="search">
+              <div className={styles.search} id="emissionReductionOption">
                 <span onClick={(e) => { this.handleTimeClick('week', e, 1); }}>近一周</span>
                 <span onClick={(e) => { this.handleTimeClick('month', e, 1); }}>近一月</span>
                 <span onClick={(e) => { this.handleTimeClick('year', e, 1); }}>近一年</span>
-                <div className={styles.rangePadding}>
-                  <RangePicker disabledDate={this.disabledDate} onOk={this.handleRangeTime} />
-                </div>
               </div>
             </div>
           </div>
-          <div id="warning" style={{ width: '100%', height: '300px' }} />
+          <div id="emissionReduction" style={{ width: '100%', height: '220px' }} />
         </div>
 
         <div className="centerGap" />
@@ -228,15 +221,18 @@ class WarningCharts extends React.Component {
           <div className="analysis-warning">
             <div className={styles.titleWrap}>
               <div className={styles.nameTitle}>
-                年龄段分布
+                告警信息
               </div>
             </div>
+
+            <div className={styles.infoWrap}>
+              {this.getInfoList()}
+            </div>
           </div>
-          <div id="age" style={{ width: '100%', height: '300px' }} />
         </div>
       </div>
     );
   }
 }
 
-export default WarningCharts;
+export default WarningInfo;
