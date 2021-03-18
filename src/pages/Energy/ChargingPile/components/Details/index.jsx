@@ -13,7 +13,7 @@ const Details = (props) => {
   const { data } = props;
   logger.debug(data);
   return (
-    <Box margin={[10, 0, 10, 0]}>
+    <Box margin={[10, 0, 10, 0]} className={styles.detailsWrap}>
       <ResponsiveGrid device="desktop" gap={25}>
         <Cell colSpan={4}>
           <Box direction={'row'}>
@@ -23,7 +23,7 @@ const Details = (props) => {
               </div>
               <div className={styles.textWrap}>
                 <p>{data.name}</p>
-                <p>{data.address}</p>
+                <div>{data.address}</div>
               </div>
             </div>
           </Box>
@@ -47,7 +47,7 @@ const Details = (props) => {
                   <Img src={u2377} height={20}/>
                   <span className={styles.warningSpan}>充电桩告警：</span>
                 </p>
-                <div className={styles.warningDiv}>{data.waring}</div>
+                <p className={styles.warningDiv}>{data.waring}</p>
               </div>
               <div>
                 <hr/>
@@ -57,7 +57,7 @@ const Details = (props) => {
                   <Img src={u2376} height={20}/>
                   <span className={styles.warningSpan}>故障状态：</span>
                 </p>
-                <div className={styles.warningDiv}>{data.breakdown}</div>
+                <p className={styles.warningDiv}>{data.breakdown}</p>
               </div>
             </Box>
           </div>

@@ -1,14 +1,13 @@
 import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid } from '@alifd/next';
+import Details from '@/pages/Energy/PlantFactory/components/Details';
 
 const { Cell } = ResponsiveGrid;
 
 const PlantFactory = () => {
   return (
-    <ResponsiveGrid
-      gap={20}
-    >
+    <ResponsiveGrid>
       <Cell colSpan={12}>
         <div className="analysis-header">
           <PageHeader
@@ -29,7 +28,7 @@ const PlantFactory = () => {
       </Cell>
 
       <Cell colSpan={12}>
-        植物工厂
+        <Details />
       </Cell>
     </ResponsiveGrid>
   );

@@ -1,12 +1,37 @@
-.contentTopWrap {
-  background-color: #fff;
-  height: 50px;
-  width: 100%;
-}
-.contentWrap {
-  background-color: #fff;
-  height: 100px;
-  width: 100%;
-}
 
-
+.detailsWrap1 {
+  height: 645px;
+}
+.detailsWrap2 {
+  height: 140px;
+}
+.factoryImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.oneRowLeftTop {
+  height: 250px;
+  background-color: #fff;
+  text-align: center;
+}
+.oneRowLeftBottom {
+  height: 360px;
+  text-align: center;
+}
+.oneRowLeftBottom1 {
+  height: 200px;
+  text-align: center;
+  background-color: #fff;
+}
+.oneRowLeftBottom2 {
+  height: 110px;
+  background-color: #fff;
+}
+.oneRowLeftBottom2 p:first-child{
+  font-size: 16px;
+}
+.oneRowRightWrap {
+  height: 192px;
+  background-color: #fff;
+}
