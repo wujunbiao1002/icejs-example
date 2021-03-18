@@ -1,6 +1,7 @@
 import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid } from '@alifd/next';
+import HomePhotovoltaic from '@/pages/Energy/HomePhotovoltaic';
 
 const { Cell } = ResponsiveGrid;
 
@@ -34,5 +35,7 @@ const SurfacePhotovoltaic = () => {
     </ResponsiveGrid>
   );
 };
-
+SurfacePhotovoltaic.pageConfig = {
+  auth: ['admin'],
+};
 export default SurfacePhotovoltaic;

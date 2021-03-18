@@ -1,10 +1,11 @@
 import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid } from '@alifd/next';
+import HomePhotovoltaic from '@/pages/Energy/HomePhotovoltaic';
 
 const { Cell } = ResponsiveGrid;
 
-const SurfacePhotovoltaic = () => {
+const RooftopPhotovoltaic = () => {
   return (
     <ResponsiveGrid
       gap={20}
@@ -34,5 +35,7 @@ const SurfacePhotovoltaic = () => {
     </ResponsiveGrid>
   );
 };
-
-export default SurfacePhotovoltaic;
+RooftopPhotovoltaic.pageConfig = {
+  auth: ['admin'],
+};
+export default RooftopPhotovoltaic;
