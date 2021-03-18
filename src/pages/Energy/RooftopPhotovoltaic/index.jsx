@@ -6,7 +6,7 @@ import RoofStatic from '@/pages/Energy/RooftopPhotovoltaic/components/RoofStatic
 const { Cell } = ResponsiveGrid;
 const { Item, SubNav } = Nav;
 
-const SurfacePhotovoltaic = () => {
+const RooftopPhotovoltaic = () => {
   return (
     <ResponsiveGrid
       gap={20}
@@ -58,7 +58,7 @@ const SurfacePhotovoltaic = () => {
     </ResponsiveGrid>
   );
 };
-SurfacePhotovoltaic.pageConfig = {
+RooftopPhotovoltaic.pageConfig = {
   auth: ['admin'],
 };
-export default SurfacePhotovoltaic;
+export default RooftopPhotovoltaic;

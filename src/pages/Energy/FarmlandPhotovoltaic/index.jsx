@@ -6,7 +6,6 @@ import outputImg from '../../../static/images/output.png';
 import ElectricityCharts from '@/pages/Energy/FarmlandPhotovoltaic/components/ElectricityCharts';
 import WarningInfo from '@/pages/Energy/FarmlandPhotovoltaic/components/WarningInfo';
 import WarningAnalysis from '@/pages/Energy/FarmlandPhotovoltaic/components/WarningAnalysis';
-import ChargingPile from '@/pages/Energy/ChargingPile';
 
 const { Cell } = ResponsiveGrid;
 

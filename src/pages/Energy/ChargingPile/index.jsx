@@ -3,7 +3,6 @@ import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid, Tab } from '@alifd/next';
 import Details from './components/Details';
 import mock from './mock';
-import FormGroup from '@/pages/Alarm/DataAnalysis';
 
 const { Cell } = ResponsiveGrid;
 

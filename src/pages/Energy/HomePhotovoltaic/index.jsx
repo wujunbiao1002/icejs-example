@@ -1,7 +1,6 @@
 import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid } from '@alifd/next';
-import FarmlandPhotovoltaic from '@/pages/Energy/FarmlandPhotovoltaic';
 
 const { Cell } = ResponsiveGrid;
 
