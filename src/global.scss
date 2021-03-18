@@ -177,3 +177,27 @@ body {
   color: #2062e1;
   padding-top: 8px;
 }
+
+// 屋顶光伏
+.roof-static {
+  display: flex;
+  justify-content: stretch;
+  background-color: #fff;
+}
+
+.roof-static .next-nav.next-normal .next-nav-item.next-menu-item.next-opened, .roof-static .next-nav.next-normal .next-menu-sub-menu .next-menu-item {
+  background-color: #fff;
+}
+
+.roof-static .next-nav.next-normal {
+  box-shadow: none;
+}
+
+.roof-static .next-menu {
+  border: none;
+}
+
+.roof-static-num {
+  width: 100%;
+}
+

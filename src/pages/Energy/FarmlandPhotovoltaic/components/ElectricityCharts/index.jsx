@@ -10,25 +10,30 @@ let rateInit;
 let generatingCapacityInit;
 
 let dateList = [];
-let bloodPressureList = [];
-let callingList = [];
-let oxygenList = [];
-let rateList = [];
+// 发电量
+let generatingCapacityList = [];
+// 发电功率
+let farmlandElectricityList = [];
 
 // eslint-disable-next-line @iceworks/best-practices/recommend-functional-component
 class ElectricityCharts extends React.Component {
-  state = {
-  };
+  state = {};
 
   resizeCharts = () => {
     rateInit.resize();
     generatingCapacityInit.resize();
-  }
+  };
 
   componentDidMount() {
-    const dom = document.getElementById('search').querySelector('span');
-    this.handleTimeClick('week', dom, 0);
-    this.loadRateChart();
+    // 发电量
+    const dom = document.getElementById('searchOutput')
+      .querySelector('span');
+    this.handleTimeClick('week', dom, 0, false);
+    // 发电功率
+    const isPowerDom = document.getElementById('search')
+      .querySelector('span');
+    this.handleTimeClick('week', isPowerDom, 0, true);
+    this.loadElectricityCapacityChart();
     this.loadGeneratingCapacityChart();
     window.addEventListener('resize', this.resizeCharts);
   }
@@ -38,33 +43,36 @@ class ElectricityCharts extends React.Component {
   }
 
   // 发电功率
-  loadRateChart = () => {
+  loadElectricityCapacityChart = () => {
     rateInit = echarts.init(document.getElementById('electricityCapacity'));
     rateInit.setOption(farmlandElectricityPower);
-  }
+  };
 
   // 发电量
   loadGeneratingCapacityChart = () => {
     generatingCapacityInit = echarts.init(document.getElementById('productionCapacity'));
     generatingCapacityInit.setOption(generatingCapacity);
-  }
+  };
 
-  creatData = (startDate, endDate, isRange) => {
+  creatData = (startDate, endDate, isRange, isYear) => {
+    let day;
     let _dt1 = new Date(startDate);
     const _dt2 = new Date(endDate);
     const dt1 = _dt1.getTime();
     const dt2 = _dt2.getTime();
-    const day = parseInt(Math.abs(dt1 - dt2) / 1000 / 60 / 60 / 24);
+    day = parseInt(Math.abs(dt1 - dt2) / 1000 / 60 / 60 / 24);
     dateList = [];
-    bloodPressureList = [];
-    callingList = [];
-    oxygenList = [];
-    rateList = [];
-    dateList.push(this.formatDate(_dt1));
-    bloodPressureList.push(this.getRandom(3, 5));
-    callingList.push(this.getRandom(5, 8));
-    oxygenList.push(this.getRandom(4, 6));
-    rateList.push(this.getRandom(1, 3));
+    generatingCapacityList = [];
+    farmlandElectricityList = [];
+
+    if (isYear) {
+      dateList = startDate;
+      day = startDate.length;
+    } else {
+      dateList.push(this.formatDate(_dt1));
+    }
+    generatingCapacityList.push(this.getRandom(60, 150));
+    farmlandElectricityList.push(this.getRandom(55, 90));
 
     // 日期选择框的时间往后+1
     if (isRange) {
@@ -72,20 +80,18 @@ class ElectricityCharts extends React.Component {
         _dt1 = _dt1.setDate(_dt1.getDate() + 1);
         _dt1 = new Date(_dt1);
         dateList.push(this.formatDate(_dt1));
-        bloodPressureList.push(this.getRandom(3, 5));
-        callingList.push(this.getRandom(5, 8));
-        oxygenList.push(this.getRandom(4, 6));
-        rateList.push(this.getRandom(1, 3));
+        generatingCapacityList.push(this.getRandom(60, 150));
+        farmlandElectricityList.push(this.getRandom(55, 90));
       }
     } else {
       for (let i = 1; i <= day; i++) {
         _dt1 = _dt1.setDate(_dt1.getDate() - 1);
         _dt1 = new Date(_dt1);
-        dateList.push(this.formatDate(_dt1));
-        bloodPressureList.push(this.getRandom(3, 5));
-        callingList.push(this.getRandom(5, 8));
-        oxygenList.push(this.getRandom(4, 6));
-        rateList.push(this.getRandom(1, 3));
+        if (!isYear) {
+          dateList.push(this.formatDate(_dt1));
+        }
+        generatingCapacityList.push(this.getRandom(60, 150));
+        farmlandElectricityList.push(this.getRandom(55, 90));
       }
     }
   };
@@ -95,32 +101,52 @@ class ElectricityCharts extends React.Component {
   formatDate = (date) => {
     const y = date.getFullYear();
     let m = date.getMonth() + 1;
-    m = m < 10 ? `0${ m}` : m;
+    m = m < 10 ? `0${m}` : m;
     let d = date.getDate();
-    d = d < 10 ? (`0${ d}`) : d;
-    return `${y }-${ m }-${ d}`;
+    d = d < 10 ? (`0${d}`) : d;
+    return `${y}-${m}-${d}`;
   };
-  handleRangeTime = (val, isRange = true) => {
+  handleRangeTime = (val, isRange = true, isPower = false, isYear) => {
     const startDate = val[0];
     const endDate = val[1];
     logger.debug(startDate);
     logger.debug(endDate);
     if (isRange) {
-      this.creatData(startDate, endDate, isRange);
+      this.creatData(startDate, endDate, isRange, isYear);
     } else {
-      this.creatData(startDate, endDate, false);
+      this.creatData(startDate, endDate, false, isYear);
     }
-    this.initChart(isRange);
+    this.initChart(isRange, isPower);
   };
 
-  handleTimeClick = (option, e, time) => {
-    const dom = document.getElementById('search').querySelectorAll('span');
-    dom.forEach((item) => {
-      item.style.color = '#999';
-      item.classList.remove('notClick');
-    });
-    // dom.style.color = 'green';
-    logger.debug('dom', e.target);
+  /**
+   * option 判断是近一周或近一月或近一年
+   * e 传回当前的dom节点 设置不允许再点击和颜色变灰
+   * time 次数，第一次渲染时为0，点击的都是1
+   * isPower 判断是否是发电功率
+   * @param option
+   * @param e
+   * @param time
+   * @param isPower
+   */
+  handleTimeClick = (option, e, time, isPower) => {
+    if (isPower) {
+      const dom = document.getElementById('search')
+        .querySelectorAll('span');
+      dom.forEach((item) => {
+        item.style.color = '#999';
+        item.classList.remove('notClick');
+      });
+      logger.debug('dom', e.target);
+    } else {
+      const dom = document.getElementById('searchOutput')
+        .querySelectorAll('span');
+      dom.forEach((item) => {
+        item.style.color = '#999';
+        item.classList.remove('notClick');
+      });
+      logger.debug('dom', e.target);
+    }
     if (time === 0) {
       e.style.color = '#434343';
       e.setAttribute('class', 'notClick');
@@ -138,11 +164,22 @@ class ElectricityCharts extends React.Component {
       startDate = this.getBeforeDate(0);
       endDate = this.getBeforeDate(30);
     } else if (option === 'year') {
-      startDate = this.getBeforeDate(0);
-      endDate = this.getBeforeDate(365);
+      startDate = this.getBeforeYear();
+      endDate = '';
     }
-    this.handleRangeTime([startDate, endDate], false);
-  }
+    logger.debug('startDate', startDate, endDate);
+    if (isPower) {
+      if (option === 'year') {
+        this.handleRangeTime([startDate, endDate], false, true, true);
+      } else {
+        this.handleRangeTime([startDate, endDate], false, true, false);
+      }
+    } else if (option === 'year') {
+      this.handleRangeTime([startDate, endDate], false, false, true);
+    } else {
+      this.handleRangeTime([startDate, endDate], false, false, false);
+    }
+  };
 
   getBeforeDate = (n) => {
     const d = new Date();
@@ -161,19 +198,50 @@ class ElectricityCharts extends React.Component {
     year = d.getFullYear();
     mon = d.getMonth() + 1;
     day = d.getDate();
-    const s = `${year }-${ mon < 10 ? (`0${ mon}`) : mon }-${ day < 10 ? (`0${ day}`) : day}`;
+    const s = `${year}-${mon < 10 ? (`0${mon}`) : mon}-${day < 10 ? (`0${day}`) : day}`;
     return s;
-  }
+  };
 
-  initChart = (isRange) => {
-    if (isRange) {
-      farmlandElectricityPower.xAxis[0].data = dateList;
-    } else {
-      farmlandElectricityPower.xAxis[0].data = dateList.reverse();
+  getBeforeYear = () => {
+    const dataArr = [];
+    const data = new Date();
+    const year = data.getFullYear();
+    // 获取到当前月份,设置月份
+    data.setMonth(data.getMonth() + 1, 1);
+    for (let i = 0; i < 12; i++) {
+      // 每次循环一次 月份值减1
+      data.setMonth(data.getMonth() - 1);
+      let m = data.getMonth() + 1;
+      m = m < 10 ? `0${ m}` : m;
+      dataArr.push(`${data.getFullYear() }-${ m}`);
     }
-    farmlandElectricityPower.series[0].data = callingList;
+    logger.debug('dataArr', dataArr);
+    return dataArr;
+  };
 
-    this.loadRateChart();
+  /**
+   * isRange 判断是否是日期选择框，日期选择框的数据不需要reverse
+   * isPower判断是否是发电功率的图表
+   * @param isRange
+   * @param isPower
+   */
+  initChart = (isRange, isPower) => {
+    if (isPower) {
+      // 发电功率
+      if (isRange) {
+        farmlandElectricityPower.xAxis[0].data = dateList;
+      } else {
+        farmlandElectricityPower.xAxis[0].data = dateList.reverse();
+      }
+      farmlandElectricityPower.series[0].data = farmlandElectricityList;
+      this.loadElectricityCapacityChart();
+    } else {
+      // 发电量
+      generatingCapacity.xAxis[0].data = dateList.reverse();
+      generatingCapacity.series[0].data = generatingCapacityList;
+
+      this.loadGeneratingCapacityChart();
+    }
   };
 
   render() {
@@ -187,15 +255,33 @@ class ElectricityCharts extends React.Component {
               </div>
             </div>
             <div className={styles.leftSearch} id="searchOutput">
-              <span onClick={(e) => { this.handleTimeClick('week', e, 1); }}>近一周</span>
-              <span onClick={(e) => { this.handleTimeClick('month', e, 1); }}>近一月</span>
-              <span onClick={(e) => { this.handleTimeClick('year', e, 1); }}>近一年</span>
+              <span onClick={(e) => {
+                this.handleTimeClick('week', e, 1, false);
+              }}
+              >近一周
+              </span>
+              <span onClick={(e) => {
+                this.handleTimeClick('month', e, 1, false);
+              }}
+              >近一月
+              </span>
+              <span onClick={(e) => {
+                this.handleTimeClick('year', e, 1, false);
+              }}
+              >近一年
+              </span>
               <div className={styles.rangePadding}>
                 <RangePicker disabledDate={this.disabledDate} onOk={this.handleRangeTime} />
               </div>
             </div>
           </div>
-          <div id="productionCapacity" style={{ width: '100%', height: '220px' }} />
+          <div
+            id="productionCapacity"
+            style={{
+              width: '100%',
+              height: '220px',
+            }}
+          />
         </div>
 
         <div className="centerGap" />
@@ -207,13 +293,31 @@ class ElectricityCharts extends React.Component {
                 发电功率（KW）
               </div>
               <div className={styles.search} id="search">
-                <span onClick={(e) => { this.handleTimeClick('week', e, 1); }}>近一周</span>
-                <span onClick={(e) => { this.handleTimeClick('month', e, 1); }}>近一月</span>
-                <span onClick={(e) => { this.handleTimeClick('year', e, 1); }}>近一年</span>
+                <span onClick={(e) => {
+                  this.handleTimeClick('week', e, 1, true);
+                }}
+                >近一周
+                </span>
+                <span onClick={(e) => {
+                  this.handleTimeClick('month', e, 1, true);
+                }}
+                >近一月
+                </span>
+                <span onClick={(e) => {
+                  this.handleTimeClick('year', e, 1, true);
+                }}
+                >近一年
+                </span>
               </div>
             </div>
           </div>
-          <div id="electricityCapacity" style={{ width: '100%', height: '280px' }} />
+          <div
+            id="electricityCapacity"
+            style={{
+              width: '100%',
+              height: '280px',
+            }}
+          />
         </div>
       </div>
     );
