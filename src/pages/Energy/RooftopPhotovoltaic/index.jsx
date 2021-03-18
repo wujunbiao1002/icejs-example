@@ -2,6 +2,8 @@ import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid, Nav } from '@alifd/next';
 import RoofStatic from '@/pages/Energy/RooftopPhotovoltaic/components/RoofStatic';
+import ElectricityCharts from '@/pages/Energy/FarmlandPhotovoltaic/components/ElectricityCharts';
+import RoofWarning from '@/pages/Energy/RooftopPhotovoltaic/components/RoofWarning';
 
 const { Cell } = ResponsiveGrid;
 const { Item, SubNav } = Nav;
@@ -52,6 +54,18 @@ const RooftopPhotovoltaic = () => {
 
           <div className="roof-static-num">
             <RoofStatic />
+
+            <div className="levelGap" />
+
+            <div className="roof-electricity">
+              <ElectricityCharts />
+            </div>
+
+            <div className="levelGap" />
+
+            <div className="roof-warning">
+              <RoofWarning />
+            </div>
           </div>
         </div>
       </Cell>

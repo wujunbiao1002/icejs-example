@@ -222,4 +222,54 @@ export const warningAnalysis = {
     },
   ],
 };
+// 告警次数统计
+export const warningAnalysisTest = {
+  grid: {
+    ...gridNumFun('8%', '6%', '3%', '12%'),
+  },
+  tooltip: {
+    ...setAxisTooltip,
+  },
+  xAxis: [{
+    boundaryGap: false,
+    type: 'category',
+    data: ['一月', '二月', '二月', '二月', '二月', '二月', '二月', '二月'],
+    ...setXAxis,
+  }],
+  yAxis: [{
+    type: 'value',
+    boundaryGap: [0, '100%'],
+    ...setYAxis,
+    data: [462, 654, 356, 239],
+  }],
+  series: [
+    {
+      name: '告警次数',
+      type: 'line',
+      smooth: false,
+      symbol: 'none',
+      sampling: 'average',
+      itemStyle: {
+        color: '#ffdf5e',
+      },
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [{
+            offset: 0,
+            color: 'rgb(255,250,232)', // 0% 处的颜色
+          }, {
+            offset: 1,
+            color: 'rgba(255,250,232, 0.3)', // 100% 处的颜色
+          }],
+        },
+      },
+      data: [128, 92, 100, 130, 94, 129, 104, 121],
+    },
+  ],
+};
 

@@ -10,46 +10,38 @@ let dateList = [];
 let emissionReductionList = [];
 const infoList = [
   {
-    name: '小岗村铜制品工厂品工厂出现电压欠压',
-    time: '2021-03-12  10:23:10',
-  },
-  {
-    name: '小岗村铜制品工厂出现电压出现电压欠压',
-    time: '2021-03-12  10:23:10',
-  },
-  {
-    name: '小岗村铜制品工厂出现村铜制村铜制电压欠压',
-    time: '2021-03-12  10:23:10',
-  },
-  {
-    name: '小岗村铜制品工厂工厂出现电压欠压',
-    time: '2021-03-12  10:23:10',
-  },
-  {
-    name: '小岗村铜制品工厂出现出现电压欠压',
-    time: '2021-03-12  10:23:10',
-  },
-  {
     name: '小岗村铜制品工厂出现电压欠压',
-    time: '2021-03-12  10:23:10',
+    time: '2021-03-18  12:23:10',
   },
   {
-    name: '小岗村铜制品工厂出现电压欠压',
-    time: '2021-03-12  10:23:10',
+    name: '小岗村小岗中学出现电网过压',
+    time: '2021-03-17  10:43:10',
+  },
+  {
+    name: '小岗村铜制品工厂出现电网过频',
+    time: '2021-03-16  14:23:44',
+  },
+  {
+    name: '小岗村制衣工厂出现电网过频',
+    time: '2021-03-15  10:11:10',
+  },
+  {
+    name: '小岗村钢铁工厂出现电压欠压',
+    time: '2021-03-15  09:21:42',
   },
 ];
 
 // eslint-disable-next-line @iceworks/best-practices/recommend-functional-component
 class WarningInfo extends React.Component {
-  state = {
-  };
+  state = {};
 
   resizeCharts = () => {
     rateInit.resize();
-  }
+  };
 
   componentDidMount() {
-    const dom = document.getElementById('emissionReductionOption').querySelector('span');
+    const dom = document.getElementById('emissionReductionOption')
+      .querySelector('span');
     this.handleTimeClick('week', dom, 0);
     this.loadRateChart();
     window.addEventListener('resize', this.resizeCharts);
@@ -63,18 +55,26 @@ class WarningInfo extends React.Component {
   loadRateChart = () => {
     rateInit = echarts.init(document.getElementById('emissionReduction'));
     rateInit.setOption(emissionReduction);
-  }
+  };
 
-  creatData = (startDate, endDate, isRange) => {
+  creatData = (startDate, endDate, isRange, isYear, minValue, maxValue) => {
+    let day;
     let _dt1 = new Date(startDate);
     const _dt2 = new Date(endDate);
     const dt1 = _dt1.getTime();
     const dt2 = _dt2.getTime();
-    const day = parseInt(Math.abs(dt1 - dt2) / 1000 / 60 / 60 / 24);
+    day = parseInt(Math.abs(dt1 - dt2) / 1000 / 60 / 60 / 24);
     dateList = [];
     emissionReductionList = [];
     dateList.push(this.formatDate(_dt1));
-    emissionReductionList.push(this.getRandom(40, 130));
+    emissionReductionList.push(this.getRandom(minValue, maxValue));
+
+    if (isYear) {
+      dateList = startDate;
+      day = startDate.length;
+    } else {
+      dateList.push(this.formatDate(_dt1));
+    }
 
     // 日期选择框的时间往后+1
     if (isRange) {
@@ -82,14 +82,16 @@ class WarningInfo extends React.Component {
         _dt1 = _dt1.setDate(_dt1.getDate() + 1);
         _dt1 = new Date(_dt1);
         dateList.push(this.formatDate(_dt1));
-        emissionReductionList.push(this.getRandom(40, 130));
+        emissionReductionList.push(this.getRandom(minValue, maxValue));
       }
     } else {
       for (let i = 1; i <= day; i++) {
         _dt1 = _dt1.setDate(_dt1.getDate() - 1);
         _dt1 = new Date(_dt1);
-        dateList.push(this.formatDate(_dt1));
-        emissionReductionList.push(this.getRandom(40, 130));
+        if (!isYear) {
+          dateList.push(this.formatDate(_dt1));
+        }
+        emissionReductionList.push(this.getRandom(minValue, maxValue));
       }
     }
   };
@@ -99,26 +101,27 @@ class WarningInfo extends React.Component {
   formatDate = (date) => {
     const y = date.getFullYear();
     let m = date.getMonth() + 1;
-    m = m < 10 ? `0${ m}` : m;
+    m = m < 10 ? `0${m}` : m;
     let d = date.getDate();
-    d = d < 10 ? (`0${ d}`) : d;
-    return `${y }-${ m }-${ d}`;
+    d = d < 10 ? (`0${d}`) : d;
+    return `${y}-${m}-${d}`;
   };
-  handleRangeTime = (val, isRange = true) => {
+  handleRangeTime = (val, isRange = true, isYear, minValue, maxValue) => {
     const startDate = val[0];
     const endDate = val[1];
     logger.debug(startDate);
     logger.debug(endDate);
     if (isRange) {
-      this.creatData(startDate, endDate, isRange);
+      this.creatData(startDate, endDate, isRange, isYear, minValue, maxValue);
     } else {
-      this.creatData(startDate, endDate, false);
+      this.creatData(startDate, endDate, false, isYear, minValue, maxValue);
     }
     this.initChart(isRange);
   };
 
   handleTimeClick = (option, e, time) => {
-    const dom = document.getElementById('emissionReductionOption').querySelectorAll('span');
+    const dom = document.getElementById('emissionReductionOption')
+      .querySelectorAll('span');
     dom.forEach((item) => {
       item.style.color = '#999';
       item.classList.remove('notClick');
@@ -135,18 +138,30 @@ class WarningInfo extends React.Component {
 
     let startDate;
     let endDate;
+    let isYear = false;
+    let minValue;
+    let maxValue;
     if (option === 'week') {
+      isYear = false;
+      minValue = 60;
+      maxValue = 120;
       startDate = this.getBeforeDate(0);
-      endDate = this.getBeforeDate(7);
+      endDate = this.getBeforeDate(6);
     } else if (option === 'month') {
+      isYear = false;
+      minValue = 60;
+      maxValue = 120;
       startDate = this.getBeforeDate(0);
-      endDate = this.getBeforeDate(30);
+      endDate = this.getBeforeDate(29);
     } else if (option === 'year') {
-      startDate = this.getBeforeDate(0);
-      endDate = this.getBeforeDate(365);
+      isYear = true;
+      minValue = 1800;
+      maxValue = 3600;
+      startDate = this.getBeforeYear();
+      endDate = '';
     }
-    this.handleRangeTime([startDate, endDate], false);
-  }
+    this.handleRangeTime([startDate, endDate], false, isYear, minValue, maxValue);
+  };
 
   getBeforeDate = (n) => {
     const d = new Date();
@@ -165,9 +180,27 @@ class WarningInfo extends React.Component {
     year = d.getFullYear();
     mon = d.getMonth() + 1;
     day = d.getDate();
-    const s = `${year }-${ mon < 10 ? (`0${ mon}`) : mon }-${ day < 10 ? (`0${ day}`) : day}`;
+    const s = `${year}-${mon < 10 ? (`0${mon}`) : mon}-${day < 10 ? (`0${day}`) : day}`;
     return s;
-  }
+  };
+
+  getBeforeYear = () => {
+    const dataArr = [];
+    const data = new Date();
+    const year = data.getFullYear();
+    // 获取到当前月份,设置月份
+    data.setMonth(data.getMonth() + 1, 1);
+    for (let i = 0; i < 12; i++) {
+      // 每次循环一次 月份值减1
+      data.setMonth(data.getMonth() - 1);
+      let m = data.getMonth() + 1;
+      m = m < 10 ? `0${m}` : m;
+      dataArr.push(`${data.getFullYear()}-${m}`);
+    }
+    logger.debug('dataArr', dataArr);
+    return dataArr;
+  };
+
 
   initChart = (isRange) => {
     if (isRange) {
@@ -187,14 +220,14 @@ class WarningInfo extends React.Component {
         {
           infoList.map((item) => (
             <div className={styles.infoItem}>
-              <div>{ item.name }</div>
-              <div>{ item.time }</div>
+              <div>{item.name}</div>
+              <div>{item.time}</div>
             </div>
           ))
         }
       </div>
     );
-  }
+  };
 
   render() {
     return (
@@ -206,16 +239,25 @@ class WarningInfo extends React.Component {
                 CO2减排量（KG）
               </div>
               <div className={styles.search} id="emissionReductionOption">
-                <span onClick={(e) => { this.handleTimeClick('week', e, 1); }}>近一周</span>
-                <span onClick={(e) => { this.handleTimeClick('month', e, 1); }}>近一月</span>
-                <span onClick={(e) => { this.handleTimeClick('year', e, 1); }}>近一年</span>
+                <span onClick={(e) => {
+                  this.handleTimeClick('week', e, 1);
+                }}>近一周</span>
+                <span onClick={(e) => {
+                  this.handleTimeClick('month', e, 1);
+                }}>近一月</span>
+                <span onClick={(e) => {
+                  this.handleTimeClick('year', e, 1);
+                }}>近一年</span>
               </div>
             </div>
           </div>
-          <div id="emissionReduction" style={{ width: '100%', height: '220px' }} />
+          <div id="emissionReduction" style={{
+            width: '100%',
+            height: '220px',
+          }}/>
         </div>
 
-        <div className="centerGap" />
+        <div className="centerGap"/>
 
         <div className="analysis-warning-wrap">
           <div className="analysis-warning">

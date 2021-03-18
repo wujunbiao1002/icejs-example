@@ -201,7 +201,11 @@ body {
   border: none;
 }
 
-.roof-static-num {
+.roof-static-num, .roof-electricity {
   width: 100%;
+}
+
+.roof-electricity {
+  margin: -20px 0;
 }
 

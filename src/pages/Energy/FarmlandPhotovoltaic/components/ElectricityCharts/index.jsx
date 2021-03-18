@@ -3,8 +3,9 @@ import styles from './index.module.scss';
 import * as echarts from 'echarts';
 import { generatingCapacity, farmlandElectricityPower } from '@/static/js/echartsFarmland';
 import { logger } from 'ice';
-import { DatePicker } from '@alifd/next';
+import { DatePicker } from '@alifd/next';import moment from 'moment';
 
+const currentDate = moment();
 const { RangePicker } = DatePicker;
 let rateInit;
 let generatingCapacityInit;
@@ -54,7 +55,7 @@ class ElectricityCharts extends React.Component {
     generatingCapacityInit.setOption(generatingCapacity);
   };
 
-  creatData = (startDate, endDate, isRange, isYear) => {
+  creatData = (startDate, endDate, isRange, isYear, minValue, maxValue) => {
     let day;
     let _dt1 = new Date(startDate);
     const _dt2 = new Date(endDate);
@@ -71,8 +72,8 @@ class ElectricityCharts extends React.Component {
     } else {
       dateList.push(this.formatDate(_dt1));
     }
-    generatingCapacityList.push(this.getRandom(60, 150));
-    farmlandElectricityList.push(this.getRandom(55, 90));
+    generatingCapacityList.push(this.getRandom(minValue, maxValue));
+    farmlandElectricityList.push(this.getRandom(minValue, maxValue));
 
     // 日期选择框的时间往后+1
     if (isRange) {
@@ -80,8 +81,8 @@ class ElectricityCharts extends React.Component {
         _dt1 = _dt1.setDate(_dt1.getDate() + 1);
         _dt1 = new Date(_dt1);
         dateList.push(this.formatDate(_dt1));
-        generatingCapacityList.push(this.getRandom(60, 150));
-        farmlandElectricityList.push(this.getRandom(55, 90));
+        generatingCapacityList.push(this.getRandom(minValue, maxValue));
+        farmlandElectricityList.push(this.getRandom(minValue, maxValue));
       }
     } else {
       for (let i = 1; i <= day; i++) {
@@ -90,8 +91,8 @@ class ElectricityCharts extends React.Component {
         if (!isYear) {
           dateList.push(this.formatDate(_dt1));
         }
-        generatingCapacityList.push(this.getRandom(60, 150));
-        farmlandElectricityList.push(this.getRandom(55, 90));
+        generatingCapacityList.push(this.getRandom(minValue, maxValue));
+        farmlandElectricityList.push(this.getRandom(minValue, maxValue));
       }
     }
   };
@@ -106,15 +107,15 @@ class ElectricityCharts extends React.Component {
     d = d < 10 ? (`0${d}`) : d;
     return `${y}-${m}-${d}`;
   };
-  handleRangeTime = (val, isRange = true, isPower = false, isYear) => {
+  handleRangeTime = (val, isRange = true, isPower = false, isYear, minValue = 50, maxValue = 100) => {
     const startDate = val[0];
     const endDate = val[1];
     logger.debug(startDate);
     logger.debug(endDate);
     if (isRange) {
-      this.creatData(startDate, endDate, isRange, isYear);
+      this.creatData(startDate, endDate, isRange, isYear, minValue, maxValue);
     } else {
-      this.creatData(startDate, endDate, false, isYear);
+      this.creatData(startDate, endDate, false, isYear, minValue, maxValue);
     }
     this.initChart(isRange, isPower);
   };
@@ -159,10 +160,10 @@ class ElectricityCharts extends React.Component {
     let endDate;
     if (option === 'week') {
       startDate = this.getBeforeDate(0);
-      endDate = this.getBeforeDate(7);
+      endDate = this.getBeforeDate(6);
     } else if (option === 'month') {
       startDate = this.getBeforeDate(0);
-      endDate = this.getBeforeDate(30);
+      endDate = this.getBeforeDate(29);
     } else if (option === 'year') {
       startDate = this.getBeforeYear();
       endDate = '';
@@ -170,14 +171,14 @@ class ElectricityCharts extends React.Component {
     logger.debug('startDate', startDate, endDate);
     if (isPower) {
       if (option === 'year') {
-        this.handleRangeTime([startDate, endDate], false, true, true);
+        this.handleRangeTime([startDate, endDate], false, true, true, 1500, 4500);
       } else {
-        this.handleRangeTime([startDate, endDate], false, true, false);
+        this.handleRangeTime([startDate, endDate], false, true, false, 50, 150);
       }
     } else if (option === 'year') {
-      this.handleRangeTime([startDate, endDate], false, false, true);
+      this.handleRangeTime([startDate, endDate], false, false, true, 1650, 3000);
     } else {
-      this.handleRangeTime([startDate, endDate], false, false, false);
+      this.handleRangeTime([startDate, endDate], false, false, false, 55, 100);
     }
   };
 
@@ -241,6 +242,22 @@ class ElectricityCharts extends React.Component {
       generatingCapacity.series[0].data = generatingCapacityList;
 
       this.loadGeneratingCapacityChart();
+    }
+  };
+
+  disabledDate = function (date, view) {
+    switch (view) {
+      case 'date':
+        return date.valueOf() >= currentDate.valueOf();
+      case 'year':
+        return date.year() > currentDate.year();
+      case 'month':
+        return (
+          date.year() * 100 + date.month() >
+          currentDate.year() * 100 + currentDate.month()
+        );
+      default:
+        return false;
     }
   };
 
