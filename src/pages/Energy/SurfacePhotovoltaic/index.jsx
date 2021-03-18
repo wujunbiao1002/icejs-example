@@ -9,7 +9,7 @@ import WarningAnalysis from '@/pages/Energy/FarmlandPhotovoltaic/components/Warn
 
 const { Cell } = ResponsiveGrid;
 
-const SurfacePhotovoltaic = () => {
+const RooftopPhotovoltaic = () => {
   return (
     <ResponsiveGrid
       gap={20}
@@ -26,7 +26,7 @@ const SurfacePhotovoltaic = () => {
                 name: '系统首页',
               },
               {
-                name: '农田光伏',
+                name: '水面光伏',
               },
             ]}
           />
@@ -170,5 +170,7 @@ const SurfacePhotovoltaic = () => {
     </ResponsiveGrid>
   );
 };
-
-export default SurfacePhotovoltaic;
+RooftopPhotovoltaic.pageConfig = {
+  auth: ['admin'],
+};
+export default RooftopPhotovoltaic;

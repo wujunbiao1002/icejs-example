@@ -58,5 +58,7 @@ const SurfacePhotovoltaic = () => {
     </ResponsiveGrid>
   );
 };
-
+SurfacePhotovoltaic.pageConfig = {
+  auth: ['admin'],
+};
 export default SurfacePhotovoltaic;

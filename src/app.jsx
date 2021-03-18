@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { runApp, logger, getSearchParams } from 'ice';
+import { runApp, logger } from 'ice';
 import { Message } from '@alifd/next';
 import LocaleProvider from '@/components/LocaleProvider';
 import { getLocale } from '@/utils/locale';
 import LoadingProvider from '@/components/LoadingProvider';
-import Exception from '@/components/Exception';
 
 const locale = getLocale();
+
 const appConfig = {
   request: {
     // 可选的，全局设置 request 是否返回 response 对象，默认为 false
@@ -91,36 +91,31 @@ const appConfig = {
   },
   app: {
     getInitialData: async () => {
-      const searchParams = getSearchParams();
-      logger.debug('app');
-      logger.debug(searchParams);
       // 模拟服务端返回的数据
       // const data = await request('/api/auth');
-      // const { role, starPermission, followPermission } = data;
+      // 模拟服务端返回的数据
+      const data = {
+        role: 'admin',
+        starPermission: true,
+        followPermission: true,
+      };
 
       // 约定权限必须返回一个 auth 对象
       // 返回的每个值对应一条权限
-      // return {
-      //   auth: {
-      //     superAdmin: role === 'superAdmin',
-      //     admin: role === 'admin',
-      //     guest: role === 'guest',
-      //     starRepo: starPermission,
-      //     followRepo: followPermission,
-      //   },
-      // };
       return {
         auth: {
-          admin: true,
-          guest: false,
+          admin: data.role === 'admin',
+          guest: data.role === 'guest',
+          starRepo: data.starPermission,
+          followRepo: data.followPermission,
         },
       };
     },
     auth: {
       // 可选的，设置无权限时的展示组件，默认为 null
-      NoAuthFallback: () => <Exception statusCode={'401'} description={'无访问权限'} />,
+      // NoAuthFallback: <div>没有权限...</div>,
       // 或者传递一个函数组件
-      // NoAuthFallback: () => <div>没有权限..</div>
+      NoAuthFallback: () => <div>没有权限..</div>,
     },
     rootId: 'ice-container',
     addProvider: ({ children }) => <LocaleProvider locale={locale}>{children}</LocaleProvider>,

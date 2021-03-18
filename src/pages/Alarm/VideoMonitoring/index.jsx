@@ -5,6 +5,7 @@ import PageHeader from '@/components/PageHeader';
 import VideoView from './components/VideoView';
 import mock from './mock';
 import styles from './index.module.scss';
+import Auth from '@/components/Auth';
 
 const { Cell } = ResponsiveGrid;
 const { Group: CheckboxGroup } = Checkbox;
@@ -29,8 +30,6 @@ const VideoMonitoring = () => {
     <ResponsiveGrid
       gap={20}
       style={{
-        margin: '10px',
-        padding: '10px',
         background: '#fff',
       }}
     >
@@ -57,7 +56,9 @@ const VideoMonitoring = () => {
         <ResponsiveGrid>
           <Cell colSpan={1} />
           <Cell colSpan={10} className={styles.VideoColSpan}>
-            <CheckboxGroup defaultValue={checkDefaultValue} dataSource={videoDataList} onChange={onChange} />
+            <Auth authKeys={['superAdmin', 'admin']} >
+              <CheckboxGroup defaultValue={checkDefaultValue} dataSource={videoDataList} onChange={onChange} />
+            </Auth>
           </Cell>
           <Cell colSpan={1} />
         </ResponsiveGrid>
@@ -67,5 +68,8 @@ const VideoMonitoring = () => {
       </Cell>
     </ResponsiveGrid>
   );
+};
+VideoMonitoring.pageConfig = {
+  auth: ['admin'],
 };
 export default VideoMonitoring;

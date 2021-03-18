@@ -117,8 +117,6 @@ const HealthMonitoring = () => {
           <ResponsiveGrid
             gap={20}
             style={{
-              margin: '10px',
-              padding: '10px',
               background: '#fff',
             }}
           >
@@ -161,6 +159,8 @@ const HealthMonitoring = () => {
     </div>
   );
 };
-
+HealthMonitoring.pageConfig = {
+  auth: ['admin'],
+};
 export default HealthMonitoring;
 
