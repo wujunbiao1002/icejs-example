@@ -161,6 +161,8 @@ const HealthMonitoring = () => {
     </div>
   );
 };
-
+HealthMonitoring.pageConfig = {
+  auth: ['admin'],
+};
 export default HealthMonitoring;
 

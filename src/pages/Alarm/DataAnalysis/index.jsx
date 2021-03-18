@@ -128,5 +128,7 @@ const FormGroup = () => {
     </ResponsiveGrid>
   );
 };
-
+FormGroup.pageConfig = {
+  auth: ['admin'],
+};
 export default FormGroup;
