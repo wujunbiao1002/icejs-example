@@ -30,8 +30,6 @@ const VideoMonitoring = () => {
     <ResponsiveGrid
       gap={20}
       style={{
-        margin: '10px',
-        padding: '10px',
         background: '#fff',
       }}
     >
@@ -72,6 +70,6 @@ const VideoMonitoring = () => {
   );
 };
 VideoMonitoring.pageConfig = {
-  auth: ['qwe'],
+  auth: ['admin'],
 };
 export default VideoMonitoring;

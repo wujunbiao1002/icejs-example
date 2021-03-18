@@ -24,7 +24,7 @@ const FormGroup = () => {
     );
   };
   return (
-    <ResponsiveGrid gap={20} style={{ margin: '10px', padding: '10px', background: '#fff' }}>
+    <ResponsiveGrid gap={20} style={{ background: '#fff' }}>
       <Cell colSpan={12} style={{ margin: '0' }}>
         <div>
           <PageHeader
