@@ -1,6 +1,7 @@
 import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid } from '@alifd/next';
+import DetailsCard from './components/DetailsCard';
 
 const { Cell } = ResponsiveGrid;
 
@@ -29,7 +30,7 @@ const HomePhotovoltaic = () => {
       </Cell>
 
       <Cell colSpan={12}>
-        入户光伏
+        <DetailsCard />
       </Cell>
     </ResponsiveGrid>
   );

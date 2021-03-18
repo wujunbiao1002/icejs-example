@@ -1,0 +1,37 @@
+@import '../../../../../../node_modules/@alifd/next/variables';
+
+.searchWrap {
+  width: 100%;
+  text-align: right;
+  margin: 10px 15px 15px 0;
+}
+.search {
+  width: 350px;
+}
+.paginationWrap {
+  margin-top: 15px;
+  width: 100%;
+  text-align: right;
+}
+.spanRight {
+  float: right;
+}
+.workStatus {
+  color: #0066CC;
+}
+.deviceStatus {
+  color: #999999;
+}
+.cardContent {
+  font-size: 16px;
+  margin: 10px 20px;
+}
+.cardWarp {
+
+}
+.cardWarp :global(.next-card-content-container){
+  margin-top: 0;
+}
+.cardHouseIamge {
+  background: url("/src/static/images/cardHouse.png") no-repeat top right;
+}
