@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Shell, ConfigProvider } from '@alifd/next';
-import PageNav from '@/layouts/BasicLayout/components/PageNav';
+import PageNav from '@/layouts/BasicLayoutEnergy/PageNav';
 import GlobalSearch from '@/layouts/BasicLayout/components/GlobalSearch';
 import Notice from '@/layouts/BasicLayout/components/Notice';
 import SolutionLink from '@/layouts/BasicLayout/components/SolutionLink';

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'ice';
 import { Nav } from '@alifd/next';
-import { asideMenuConfig } from '../../../BasicLayoutAlarm/menuConfig';
+import { asideMenuConfig } from '../menuConfig';
 import Img from '@icedesign/img';
-import navFooter from '../../images/navFooter.png';
+import navFooter from '../../BasicLayout/images/navFooter.png';
 
 const { SubNav } = Nav;
 const NavItem = Nav.Item; // mock the auth object

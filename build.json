@@ -1,4 +1,5 @@
 {
+  "hash": true,
   "plugins": [
     [
       "build-plugin-fusion",
