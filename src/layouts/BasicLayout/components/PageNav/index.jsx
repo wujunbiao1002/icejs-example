@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'ice';
 import { Nav } from '@alifd/next';
-import { asideMenuConfig } from '../../menuConfig';
+import { asideMenuConfig } from '../../../BasicLayoutAlarm/menuConfig';
 import Img from '@icedesign/img';
 import navFooter from '../../images/navFooter.png';
 
