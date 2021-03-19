@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Shell, ConfigProvider } from '@alifd/next';
-import PageNav from './components/PageNav';
-import GlobalSearch from './components/GlobalSearch';
-import Notice from './components/Notice';
-import SolutionLink from './components/SolutionLink';
-import HeaderAvatar from './components/HeaderAvatar';
-import Logo from './components/Logo';
-import Footer from './components/Footer';
-import heardImg from './images/heardImg.png';
+import PageNav from '@/layouts/BasicLayout/components/PageNav';
+import GlobalSearch from '@/layouts/BasicLayout/components/GlobalSearch';
+import Notice from '@/layouts/BasicLayout/components/Notice';
+import SolutionLink from '@/layouts/BasicLayout/components/SolutionLink';
+import HeaderAvatar from '@/layouts/BasicLayout/components/HeaderAvatar';
+import Logo from '@/layouts/BasicLayout/components/Logo';
+import Footer from '@/layouts/BasicLayout/components/Footer';
+import heardImg from '@/layouts/BasicLayout/images/heardImg.png';
 
 (function () {
   const throttle = function (type, name, obj = window) {
@@ -77,7 +77,7 @@ export default function BasicLayout({ children }) {
         {/* </Shell.Navigation> */}
         <Shell.Action>
           {/* <Notice /> */}
-          {/* <SolutionLink /> */}
+          <SolutionLink />
           <HeaderAvatar />
         </Shell.Action>
         <Shell.Navigation style={{ overflow: 'hidden' }}>
