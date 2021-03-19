@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid, Nav } from '@alifd/next';
 import RoofStatic from '@/pages/Energy/RooftopPhotovoltaic/components/RoofStatic';
 import ElectricityCharts from '@/pages/Energy/FarmlandPhotovoltaic/components/ElectricityCharts';
 import RoofWarning from '@/pages/Energy/RooftopPhotovoltaic/components/RoofWarning';
+import EmergencyCallInfo from '@/pages/Alarm/WarningInfo/components/EmergencyCallInfo';
 
 const { Cell } = ResponsiveGrid;
 const { Item, SubNav } = Nav;
 
 const RooftopPhotovoltaic = () => {
+  const [emergencyCallUntreated, setEmergencyCallUntreated] = useState(1);
+
   return (
     <ResponsiveGrid
       gap={20}
@@ -43,9 +46,6 @@ const RooftopPhotovoltaic = () => {
               <SubNav label="小岗村">
                 <Item>屋顶光伏1</Item>
                 <Item>屋顶光伏2</Item>
-                <Item>屋顶光伏3</Item>
-                <Item>屋顶光伏4</Item>
-                <Item>屋顶光伏5</Item>
               </SubNav>
             </Nav>
           </div>
@@ -53,7 +53,7 @@ const RooftopPhotovoltaic = () => {
           <div className="centerGap" />
 
           <div className="roof-static-num">
-            <RoofStatic />
+            <RoofStatic untreated={emergencyCallUntreated} setUntreated={setEmergencyCallUntreated} />
 
             <div className="levelGap" />
 

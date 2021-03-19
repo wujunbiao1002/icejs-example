@@ -17,21 +17,46 @@
   float: right;
 }
 .workStatus {
-  color: #0066CC;
+  color: #06c;
 }
 .deviceStatus {
-  color: #999999;
+  color: #999;
 }
 .cardContent {
   font-size: 16px;
   margin: 10px 20px;
 }
-.cardWarp {
 
-}
-.cardWarp :global(.next-card-content-container){
-  margin-top: 0;
-}
-.cardHouseIamge {
+.titleBg {
   background: url("/src/static/images/cardHouse.png") no-repeat top right;
+  background-size: 36%;
+}
+
+.popupBg {
+  color: #fff;
+  background-color: rgba(60, 60, 60, 0.7);
+}
+
+.popupBg :global(.next-balloon-normal .next-balloon-close) {
+  color: #fff;
+}
+
+.popupBg :global(.next-balloon-normal.next-balloon-top-right:after) {
+  display: none;
+}
+
+.warningTime {
+  padding-top: 10px;
+  padding-bottom: 3px;
+  text-align: center;
+}
+
+.warningInfo {
+  padding-left: 10px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.cardWarp :global(.next-card-content-container) {
+  margin-top: 0;
 }

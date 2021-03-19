@@ -1,8 +1,10 @@
-import warningInfo from '../BasicLayout/images/warningInfo.png';
-import videoMonitoring from '../BasicLayout/images/videoMonitoring.png';
-import healthMonitoring from '../BasicLayout/images/healthMonitoring.png';
-import dataAnalysis from '../BasicLayout/images/dataAnalysis.png';
-import keyAlarm from '../BasicLayout/images/keyAlarm.png';
+import farmland from './images/farmland.png';
+import surface from './images/surface.png';
+import roof from './images/home.png';
+import inHouse from './images/inHouse.png';
+import charging from './images/charging.png';
+import plant from './images/plant.png';
+import keyAlarm from './images/keyAlarm.png';
 
 const headerMenuConfig = [];
 const asideMenuConfig = [
@@ -15,32 +17,32 @@ const asideMenuConfig = [
       {
         name: '农田光伏',
         path: '/energy/farmland/photovoltaic',
-        imageIcon: warningInfo,
+        imageIcon: farmland,
       },
       {
         name: '水面光伏',
         path: '/energy/surface/photovoltaic',
-        imageIcon: healthMonitoring,
+        imageIcon: surface,
       },
       {
         name: '屋顶光伏',
         path: '/energy/rooftop/photovoltaic',
-        imageIcon: videoMonitoring,
+        imageIcon: roof,
       },
       {
         name: '入户光伏',
         path: '/energy/home/photovoltaic',
-        imageIcon: dataAnalysis,
+        imageIcon: inHouse,
       },
       {
         name: '充电桩',
         path: '/energy/charging/pile',
-        imageIcon: warningInfo,
+        imageIcon: charging,
       },
       {
         name: '植物工厂',
         path: '/energy/plant/factory',
-        imageIcon: healthMonitoring,
+        imageIcon: plant,
       },
     ],
   },
