@@ -1,8 +1,8 @@
-import warningInfo from '../BasicLayout/images/warningInfo.png';
-import videoMonitoring from '../BasicLayout/images/videoMonitoring.png';
-import healthMonitoring from '../BasicLayout/images/healthMonitoring.png';
-import dataAnalysis from '../BasicLayout/images/dataAnalysis.png';
-import keyAlarm from '../BasicLayout/images/keyAlarm.png';
+import warningInfo from './images/warningInfo.png';
+import videoMonitoring from './images/videoMonitoring.png';
+import healthMonitoring from './images/healthMonitoring.png';
+import dataAnalysis from './images/dataAnalysis.png';
+import keyAlarm from './images/keyAlarm.png';
 
 const headerMenuConfig = [];
 const asideMenuConfig = [

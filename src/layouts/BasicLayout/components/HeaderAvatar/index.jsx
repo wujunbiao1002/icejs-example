@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Overlay, Menu, Icon } from '@alifd/next';
 import styles from './index.module.scss';
-import avatarImg from '../../images/avatar.png';
+import avatarImg from '../../../BasicLayoutAlarm/images/avatar.png';
 import { Link } from 'ice';
 
 const { Item } = Menu;

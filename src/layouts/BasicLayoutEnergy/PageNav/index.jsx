@@ -4,7 +4,7 @@ import { Link, withRouter } from 'ice';
 import { Nav } from '@alifd/next';
 import { asideMenuConfig } from '../menuConfig';
 import Img from '@icedesign/img';
-import navFooter from '../../BasicLayout/images/navFooter.png';
+import navFooter from '../../BasicLayoutAlarm/images/navFooter.png';
 
 const { SubNav } = Nav;
 const NavItem = Nav.Item; // mock the auth object
