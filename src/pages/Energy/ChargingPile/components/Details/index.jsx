@@ -19,7 +19,7 @@ const Details = (props) => {
           <Box direction={'row'}>
             <div className={styles.contentWrap}>
               <div className={styles.imgDiv}>
-                <Img src={chargingPile} height={170}/>
+                <Img src={chargingPile} height={170} />
               </div>
               <div className={styles.textWrap}>
                 <p>{data.name}</p>
@@ -44,17 +44,17 @@ const Details = (props) => {
             <Box margin={[35, 20, 10, 35]}>
               <div className={styles.warningWrap}>
                 <p>
-                  <Img src={u2377} height={20}/>
+                  <Img src={u2377} height={20} />
                   <span className={styles.warningSpan}>充电桩告警：</span>
                 </p>
                 <p className={styles.warningDiv}>{data.waring}</p>
               </div>
               <div>
-                <hr/>
+                <hr />
               </div>
               <div className={styles.warningWrap}>
                 <p>
-                  <Img src={u2376} height={20}/>
+                  <Img src={u2376} height={20} />
                   <span className={styles.warningSpan}>故障状态：</span>
                 </p>
                 <p className={styles.warningDiv}>{data.breakdown}</p>

@@ -8,7 +8,7 @@ import outputImg from '@/static/images/output.png';
 import airImg from '@/static/images/airImg.svg';
 
 const RoofStatic = (props) => {
-  const { untreated } = props;
+  const { dataSource } = props;
 
   return (
     <div>
@@ -16,23 +16,23 @@ const RoofStatic = (props) => {
         <div className={styles.farmlandContent}>
           <div className={styles.contentLeft}>
             <img src={lighting} alt="l" />
-            <div className={styles.addressTitle}>{untreated.name}</div>
+            <div className={styles.addressTitle}>{dataSource.name}</div>
             <div className={styles.addressWrap}>
               <div className={styles.addressName}>
-                <img src={addressIcon} alt="icon" />安徽省凤阳县小岗村
+                <img src={addressIcon} alt="icon" />{dataSource.address}
               </div>
-              <div className={styles.addressDetailName}>小溪河镇安阳小区</div>
+              <div className={styles.addressDetailName}>{dataSource.addressDetail}</div>
             </div>
 
             <hr />
 
             <div className={styles.workStatusWrap}>
               <div>逆变器工作状态：</div>
-              <div className={styles.systemStatus}>故障停运</div>
+              <div className={styles.systemStatus}>{dataSource.workStatus}</div>
             </div>
             <div className={styles.systemStatusWrap}>
               <div>设备状态：</div>
-              <div className={styles.systemStatus}>运行</div>
+              <div className={styles.systemStatus}>{dataSource.deviceStatus}</div>
             </div>
           </div>
         </div>
@@ -43,14 +43,14 @@ const RoofStatic = (props) => {
           <div className={styles.dataWrap}>
             <div className={styles.dataItem}>
               日发电量
-              <div className={styles.dataNum}>30.12kwh</div>
+              <div className={styles.dataNum}>{dataSource.dayValue}kwh</div>
             </div>
 
             <div className={styles.verticalGap} />
 
             <div className={styles.dataItem2}>
               月发电量
-              <div className={styles.dataNum2}>231.45kwh</div>
+              <div className={styles.dataNum2}>{dataSource.monthValue}kwh</div>
             </div>
           </div>
 
@@ -59,14 +59,14 @@ const RoofStatic = (props) => {
           <div className={styles.dataWrap}>
             <div className={styles.dataItem3}>
               总发电量
-              <div className={styles.dataNum3}>1002.93kwh</div>
+              <div className={styles.dataNum3}>{dataSource.totalValue}kwh</div>
             </div>
 
             <div className={styles.verticalGap} />
 
             <div className={styles.dataItem4}>
               额定有功功率
-              <div className={styles.dataNum4}>12.31kwh</div>
+              <div className={styles.dataNum4}>{dataSource.power}kwh</div>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@ const RoofStatic = (props) => {
                   机内空气温度
                 </div>
                 <div className="farmland-center-content-item-des-num">
-                  30.1°C
+                  {dataSource.air}°C
                 </div>
               </div>
             </div>
@@ -106,7 +106,7 @@ const RoofStatic = (props) => {
                   总视在功率
                 </div>
                 <div className="farmland-center-content-item-des-num">
-                  1VA
+                  {dataSource.totalPower}VA
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@ const RoofStatic = (props) => {
                   总直流功率
                 </div>
                 <div className="farmland-center-content-item-des-num">
-                  1W
+                  {dataSource.directPower}W
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@ const RoofStatic = (props) => {
                   总有功功率
                 </div>
                 <div className="farmland-center-content-item-des-num">
-                  1W
+                  {dataSource.totalUsePower}W
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@ const RoofStatic = (props) => {
                   总无功功率
                 </div>
                 <div className="farmland-center-content-item-des-num">
-                  1var
+                  {dataSource.totalUselessPower}var
                 </div>
               </div>
             </div>
@@ -164,7 +164,7 @@ const RoofStatic = (props) => {
                   总功率因数
                 </div>
                 <div className="farmland-center-content-item-des-num">
-                  1.001
+                  {dataSource.powerFactor}
                 </div>
               </div>
             </div>

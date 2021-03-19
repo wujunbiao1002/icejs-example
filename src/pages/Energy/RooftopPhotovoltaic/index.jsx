@@ -1,16 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid, Nav } from '@alifd/next';
 import RoofStatic from '@/pages/Energy/RooftopPhotovoltaic/components/RoofStatic';
-import ElectricityCharts from '@/pages/Energy/FarmlandPhotovoltaic/components/ElectricityCharts';
+import ElectricityCharts from '@/pages/Energy/RooftopPhotovoltaic/components/ElectricityCharts';
 import RoofWarning from '@/pages/Energy/RooftopPhotovoltaic/components/RoofWarning';
-import EmergencyCallInfo from '@/pages/Alarm/WarningInfo/components/EmergencyCallInfo';
+import dataSource from './mock';
 
 const { Cell } = ResponsiveGrid;
 const { Item, SubNav } = Nav;
 
 const RooftopPhotovoltaic = () => {
-  const [emergencyCallUntreated, setEmergencyCallUntreated] = useState(1);
+  const [dataSourceList, setDataSourceList] = useState({});
+  const [isChange, setIsChange] = useState(false);
+
+  useEffect(() => {
+    setDataSourceList(dataSource.roof1);
+  }, []);
+
+  const handleRoofClick = (option) => {
+    setIsChange(true);
+    if (option === 1) {
+      setDataSourceList(dataSource.roof1);
+    } else {
+      setDataSourceList(dataSource.roof2);
+    }
+  };
 
   return (
     <ResponsiveGrid
@@ -42,10 +56,11 @@ const RooftopPhotovoltaic = () => {
               style={{ width: 160 }}
               openMode="single"
               defaultOpenKeys={['0-0']}
+              defaultSelectedKeys={['0-0-0']}
             >
               <SubNav label="小岗村">
-                <Item>屋顶光伏1</Item>
-                <Item>屋顶光伏2</Item>
+                <Item onClick={() => { handleRoofClick(1); }}>屋顶光伏1</Item>
+                <Item onClick={() => { handleRoofClick(2); }}>屋顶光伏2</Item>
               </SubNav>
             </Nav>
           </div>
@@ -53,7 +68,7 @@ const RooftopPhotovoltaic = () => {
           <div className="centerGap" />
 
           <div className="roof-static-num">
-            <RoofStatic untreated={emergencyCallUntreated} setUntreated={setEmergencyCallUntreated} />
+            <RoofStatic dataSource={dataSourceList} />
 
             <div className="levelGap" />
 
