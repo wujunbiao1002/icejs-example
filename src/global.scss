@@ -160,9 +160,17 @@ body {
   text-align: center;
 }
 
+.roof-center-content-item {
+  width: 33%;
+}
+
 .farmland-center-content-item-img {
   text-align: center;
   width: 50%;
+}
+
+.roof-air-img img {
+  width: 36px;
 }
 
 .farmland-center-content-item:first-child {
@@ -207,5 +215,13 @@ body {
 
 .roof-electricity {
   margin: -20px 0;
+}
+
+.next-balloon-normal .next-balloon-close, .next-balloon-normal .next-balloon-close :hover {
+  color: #fff !important;
+}
+
+.next-balloon-normal.next-balloon-top-right:after {
+  display: none;
 }
 

@@ -6,7 +6,7 @@ import greenBall from '../../../../../static/images/greenBall.png';
 import pureBall from '../../../../../static/images/pureBall.png';
 import lighting from '../../../../../static/images/lighting.png';
 import addressIcon from '../../../../../static/images/address_icon.png';
-import pvImg from '../../../../../static/images/pv.png';
+import surfaceImg from '../../../../../static/images/surfaceImg.png';
 import * as echarts from 'echarts';
 import { farmlandEfficiency } from '@/static/js/echartsFarmland';
 
@@ -37,12 +37,12 @@ const FarmlandTop = () => {
         <div className={styles.farmlandContent}>
           <div className={styles.contentLeft}>
             <img src={lighting} alt="l" />
-            <div className={styles.addressTitle}>小岗村农田光伏</div>
+            <div className={styles.addressTitle}>小岗村水面光伏</div>
             <div className={styles.addressWrap}>
               <div className={styles.addressName}>
                 <img src={addressIcon} alt="icon" />小溪镇小岗村
               </div>
-              <div className={styles.addressDetailName}>农光路千亩农田光伏</div>
+              <div className={styles.addressDetailName}>黄河路万里波涛光伏</div>
             </div>
             <div className={styles.systemStatusWrap}>
               <div>系统状态：</div>
@@ -51,7 +51,7 @@ const FarmlandTop = () => {
           </div>
 
           <div className={styles.lightingImg}>
-            <img src={pvImg} alt="pv" />
+            <img src={surfaceImg} alt="pv" />
           </div>
         </div>
 
@@ -71,7 +71,7 @@ const FarmlandTop = () => {
             </div>
             <div className={styles.ballDes}>
               <div>当日发电量</div>
-              <div>98.52kwh</div>
+              <div>103.22kwh</div>
             </div>
           </div>
 
@@ -83,7 +83,7 @@ const FarmlandTop = () => {
             </div>
             <div className={styles.ballDes}>
               <div>当月发电量</div>
-              <div>341.90kwh</div>
+              <div>389.30kwh</div>
             </div>
           </div>
 
@@ -95,7 +95,7 @@ const FarmlandTop = () => {
             </div>
             <div className={styles.ballDes}>
               <div>总发电量</div>
-              <div>1001.31kwh</div>
+              <div>1308.38kwh</div>
             </div>
           </div>
 

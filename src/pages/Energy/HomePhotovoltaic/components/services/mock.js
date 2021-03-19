@@ -12,7 +12,8 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
-      warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
+      warningTime: '2021-03-18 17:49:07',
+      warningInfo: '',
     },
     {
       id: 2,
@@ -26,6 +27,8 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
+      warningTime: '2021-03-18 17:49:07',
+      warningInfo: '小岗村入户光伏逆变器检测到电网电压过低',
       warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
     },
     {
@@ -40,7 +43,6 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
-      warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
     },
     {
       id: 4,
@@ -54,6 +56,8 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
+      warningTime: '2021-03-18 17:49:07',
+      warningInfo: '小岗村入户光伏逆变器检测到电网电压过低',
       warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
     },
     {
@@ -68,7 +72,6 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
-      warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
     },
     {
       id: 6,
@@ -82,6 +85,8 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
+      warningTime: '2021-03-18 17:49:07',
+      warningInfo: '小岗村入户光伏逆变器检测到电网电压过低',
       warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
     },
     {
@@ -96,7 +101,6 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
-      warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
     },
     {
       id: 8,
@@ -110,6 +114,8 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
+      warningTime: '2021-03-18 17:49:07',
+      warningInfo: '小岗村入户光伏逆变器检测到电网电压过低',
       warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
     },
     {
@@ -124,7 +130,6 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
-      warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
     },
     {
       id: 10,
@@ -138,6 +143,8 @@ export default {
       powerMeter: '1w',
       workStatus: '运行',
       deviceStatus: '故障停机',
+      warningTime: '2021-03-18 17:49:07',
+      warningInfo: '小岗村入户光伏逆变器检测到电网电压过低',
       warning: '2021-03-18 17:49:07 小岗村入户光伏逆变器检测到电网电压过低',
     },
   ],

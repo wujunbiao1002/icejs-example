@@ -1,11 +1,15 @@
 import React from 'react';
 import PageHeader from '@/components/PageHeader';
 import { ResponsiveGrid } from '@alifd/next';
-import FarmlandTop from '@/pages/Energy/FarmlandPhotovoltaic/components/farmlandTop';
+import FarmlandTop from '@/pages/Energy/SurfacePhotovoltaic/components/farmlandTop';
 import outputImg from '@/static/images/output.png';
-import ElectricityCharts from '@/pages/Energy/FarmlandPhotovoltaic/components/ElectricityCharts';
-import WarningInfo from '@/pages/Energy/FarmlandPhotovoltaic/components/WarningInfo';
-import WarningAnalysis from '@/pages/Energy/FarmlandPhotovoltaic/components/WarningAnalysis';
+import ElectricityCharts from '@/pages/Energy/SurfacePhotovoltaic/components/ElectricityCharts';
+import WarningInfo from '@/pages/Energy/SurfacePhotovoltaic/components/WarningInfo';
+import WarningAnalysis from '@/pages/Energy/SurfacePhotovoltaic/components/WarningAnalysis';
+import modalImg from '@/static/images/modalImg.png';
+import COImg from '@/static/images/COImg.png';
+import lightingImg from '@/static/images/lightingImg.png';
+import outputPower from '@/static/images/ouputPower.png';
 
 const { Cell } = ResponsiveGrid;
 
@@ -50,7 +54,7 @@ const SurfacePhotovoltaic = () => {
                     输出总有功
                   </div>
                   <div className="farmland-center-content-item-des-num">
-                    31.35kw
+                    38.18w
                   </div>
                 </div>
               </div>
@@ -61,38 +65,38 @@ const SurfacePhotovoltaic = () => {
                 </div>
                 <div className="farmland-center-content-item-des">
                   <div className="farmland-center-content-item-des-title">
-                    输出总有功
+                    输出总无功绝对值
                   </div>
                   <div className="farmland-center-content-item-des-num">
-                    31.35kw
+                    10.11kw
                   </div>
                 </div>
               </div>
 
               <div className="farmland-center-content-item">
                 <div className="farmland-center-content-item-img">
-                  <img src={outputImg} alt="output" />
+                  <img src={modalImg} alt="output" />
                 </div>
                 <div className="farmland-center-content-item-des">
                   <div className="farmland-center-content-item-des-title">
-                    输出总有功
+                    模块1: IGBT温度
                   </div>
                   <div className="farmland-center-content-item-des-num">
-                    31.35kw
+                    27.2℃
                   </div>
                 </div>
               </div>
 
               <div className="farmland-center-content-item">
                 <div className="farmland-center-content-item-img">
-                  <img src={outputImg} alt="output" />
+                  <img src={COImg} alt="output" />
                 </div>
                 <div className="farmland-center-content-item-des">
                   <div className="farmland-center-content-item-des-title">
-                    输出总有功
+                    当日CO2减排量
                   </div>
                   <div className="farmland-center-content-item-des-num">
-                    31.35kw
+                    0.121kg
                   </div>
                 </div>
               </div>
@@ -103,56 +107,56 @@ const SurfacePhotovoltaic = () => {
             <div className="farmland-center-content">
               <div className="farmland-center-content-item">
                 <div className="farmland-center-content-item-img">
-                  <img src={outputImg} alt="output" />
+                  <img src={lightingImg} alt="output" />
                 </div>
                 <div className="farmland-center-content-item-des">
                   <div className="farmland-center-content-item-des-title">
-                    输出总有功
+                    1MW当日发电量
                   </div>
                   <div className="farmland-center-content-item-des-num">
-                    31.35kw
+                    15kwh
                   </div>
                 </div>
               </div>
 
               <div className="farmland-center-content-item">
                 <div className="farmland-center-content-item-img">
-                  <img src={outputImg} alt="output" />
+                  <img src={outputPower} alt="output" />
                 </div>
                 <div className="farmland-center-content-item-des">
                   <div className="farmland-center-content-item-des-title">
-                    输出总有功
+                    输出功率因数
                   </div>
                   <div className="farmland-center-content-item-des-num">
-                    31.35kw
+                    2.00
                   </div>
                 </div>
               </div>
 
               <div className="farmland-center-content-item">
                 <div className="farmland-center-content-item-img">
-                  <img src={outputImg} alt="output" />
+                  <img src={modalImg} alt="output" />
                 </div>
                 <div className="farmland-center-content-item-des">
                   <div className="farmland-center-content-item-des-title">
-                    输出总有功
+                    模块2: IGBT温度
                   </div>
                   <div className="farmland-center-content-item-des-num">
-                    31.35kw
+                    24.3℃
                   </div>
                 </div>
               </div>
 
               <div className="farmland-center-content-item">
                 <div className="farmland-center-content-item-img">
-                  <img src={outputImg} alt="output" />
+                  <img src={COImg} alt="output" />
                 </div>
                 <div className="farmland-center-content-item-des">
                   <div className="farmland-center-content-item-des-title">
-                    输出总有功
+                    总CO2减排量
                   </div>
                   <div className="farmland-center-content-item-des-num">
-                    31.35kw
+                    0.253kg
                   </div>
                 </div>
               </div>
