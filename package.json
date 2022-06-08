@@ -1,0 +1,51 @@
+{
+  "name": "xgcsgs-fe-web",
+  "version": "0.1.0",
+  "description": "小岗村-智慧政务系统",
+  "private": false,
+  "publishConfig": {
+    "registry": "http://192.168.6.96:8083/repository/npm-repo-hosted/"
+  },
+  "dependencies": {
+    "@alifd/next": "^1.21.0",
+    "@alifd/theme-design-pro": "^0.6.2",
+    "@antv/data-set": "^0.10.2",
+    "@icedesign/img": "^1.0.4",
+    "@types/react": "^16.9.13",
+    "@types/react-dom": "^16.9.4",
+    "ahooks": "^2.0.0",
+    "bizcharts": "^3.5.6",
+    "lodash.debounce": "^4.0.8",
+    "moment": "^2.24.0",
+    "prop-types": "^15.5.8",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-intl": "^2.8.0",
+    "react-sortablejs": "^5.0.0",
+    "sortablejs": "^1.12.0",
+    "echarts": "5.0.2"
+  },
+  "devDependencies": {
+    "@iceworks/spec": "^1.0.0",
+    "build-plugin-css-assets-local": "^0.1.0",
+    "build-plugin-fusion": "^0.1.0",
+    "build-plugin-moment-locales": "^0.1.0",
+    "eslint": "^6.8.0",
+    "ice.js": "^1.0.0",
+    "stylelint": "^13.2.0"
+  },
+  "scripts": {
+    "start": "icejs start",
+    "build": "icejs build",
+    "lint": "npm run eslint && npm run stylelint",
+    "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./",
+    "eslint:fix": "npm run eslint -- --fix",
+    "stylelint": "stylelint \"**/*.{css,scss,less}\"",
+    "design": "icejs build --design"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alibaba-fusion/materials/tree/master/scaffolds/fusion-design-pro-js"
+  },
+  "originTemplate": "@alifd/fusion-design-pro-js"
+}

@@ -1,0 +1,164 @@
+
+.detailsWrap1 {
+  display: flex;
+  justify-content: stretch;
+  background-color: #fff;
+}
+
+.detailsLeft {
+  width: 30%;
+}
+
+.detailsRight {
+  width: 70%;
+}
+
+.factoryImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.oneRowLeftTop {
+  height: 250px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.oneRowLeftBottom {
+  text-align: center;
+}
+
+.oneRowLeftBottom1 {
+  text-align: center;
+  background-color: #fff;
+  padding: 30px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.oneRowLeftBottom1:first-child {
+  border-right: 1px solid #eee;
+}
+
+.temperatureTitle {
+  font-size: 18px;
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
+.temperatureValue {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.oneRowLeftBottom2 {
+  padding-top: 30px;
+  padding-bottom: 26px;
+  background-color: #fff;
+}
+
+.oneRowLeftBottom2 p:first-child {
+  font-size: 16px;
+}
+
+.address {
+  color: #666;
+}
+
+.oneRowRightWrap {
+  height: 33%;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  padding: 20px 30px 20px 10px;
+}
+
+.controlItem {
+  display: flex;
+}
+
+.controlBtn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.controlBtn span {
+  padding-right: 20px;
+}
+
+.controlImg {
+  width: 20%;
+  text-align: center;
+  margin: auto;
+}
+
+.controlImg img {
+  width: 42%;
+}
+
+.controlCenter, .controlRight {
+  width: 40%;
+}
+
+.controlTop {
+  padding-bottom: 30px;
+}
+
+.controlTop span {
+  padding: 0 10px;
+}
+
+.controlTop :global(.next-input.next-medium .next-input-control) {
+  display: none;
+}
+
+
+.detailsWrap2 {
+  display: flex;
+  justify-content: stretch;
+  background-color: #fff;
+}
+
+.settingWrap {
+  width: 50%;
+}
+
+.waterSetting {
+  padding: 20px 20px 5px 0;
+}
+
+.singleItem {
+  display: flex;
+  align-items: center;
+  padding-bottom: 25px;
+}
+
+.itemImg {
+  width: 125px;
+  text-align: center;
+}
+
+.itemImg img {
+  width: 50%;
+  height: 66px;
+  object-fit: scale-down;
+}
+
+.setItem {
+  padding-right: 30px;
+}
+
+.lightSetting {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lightSingleItem {
+  display: flex;
+  padding: 40px 20px 30px 10px;
+}
+
+

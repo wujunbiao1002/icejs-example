@@ -1,0 +1,23 @@
+import dataList from './mock';
+
+
+export const listPageData = (current, pageSize, keyword) => {
+  if (keyword) {
+    const searchData = dataList.dataList.filter(item => item.name.includes(keyword) || item.address.includes(keyword));
+    const data = searchData.slice((current - 1) * pageSize, pageSize * current);
+    return {
+      data,
+      pageSize,
+      total: searchData.length,
+      current,
+    };
+  } else {
+    const data = dataList.dataList.slice((current - 1) * pageSize, pageSize * current);
+    return {
+      data,
+      pageSize,
+      total: dataList.dataList.length,
+      current,
+    };
+  }
+};

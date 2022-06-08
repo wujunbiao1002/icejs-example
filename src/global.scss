@@ -1,0 +1,227 @@
+// 引入默认全局样式
+@import '@alifd/next/reset.scss';
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+//.warningInfo .next-tabs.next-medium .next-tabs-tab-inner {
+//  padding: 15px 35px;
+//  font-size: 16px;
+//}
+
+.warningInfo .next-tabs-wrapped > .next-tabs-bar .next-tabs-tab {
+  background: none;
+}
+
+.warningInfo .next-tabs-wrapped.next-tabs-top > .next-tabs-bar .next-tabs-tab {
+  border: none;
+}
+
+.warningInfo .next-tabs-wrapped.next-tabs-top > .next-tabs-bar .next-tabs-tab.active {
+  border-width: 1px 1px 1px 1px;
+  border-color: #e6e6e6 #e6e6e6 #fff #e6e6e6;
+  border-style: solid;
+}
+
+.warningInfo .next-tabs-wrapped > .next-tabs-bar .next-tabs-tab:hover {
+  background: none;
+}
+
+
+// 健康监控
+
+.listWrap {
+  margin: 10px 20px 20px;
+  font-size: 16px;
+}
+
+.listItem {
+  border: 1px solid #eee;
+  padding: 22px 20px;
+  margin-top: 16px;
+}
+
+.listItem:hover {
+  cursor: pointer;
+}
+
+.listName {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.listName .healthName {
+  font-size: 16px;
+  padding: 0 8px;
+}
+
+.listName .healthNum {
+  font-size: 20px;
+}
+
+.imgRotate {
+  transform: rotate(270deg);
+}
+
+// 健康监控
+
+// 数据分析
+
+.centerGap {
+  width: 20px;
+  background: #f5f5f5;
+}
+
+.analysis-header {
+  background: #fff;
+  padding-bottom: 20px;
+
+}
+
+.analysis-top, .analysis-center {
+  display: flex;
+}
+
+.analysis-center {
+  margin: 20px 0;
+}
+
+.analysis-warning-wrap {
+  background: #fff;
+  width: 50%;
+  padding-bottom: 15px;
+}
+
+.analysis-warning {
+  padding: 16px 10px 10px 0;
+}
+
+.analysis-title {
+  padding: 5px 5px 5px 20px;
+  border-left: 5px solid #97cefc;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.warning-num {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.warning-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.warning-title span {
+  padding-left: 8px;
+}
+
+// 数据分析
+
+// 不可点击
+.notClick {
+  pointer-events: none;
+}
+
+.verticalGap {
+  width: 20px;
+  background-color: #f5f5f5;
+}
+
+.levelGap {
+  height: 20px;
+  background-color: #f5f5f5;
+}
+
+
+// 农田光伏
+.farmland-center-content {
+  background-color: #fff;
+  display: flex;
+  justify-content: stretch;
+}
+
+.top-border-bottom {
+  border-bottom: 1px solid #eee;
+}
+
+.farmland-center-content-item {
+  width: 25%;
+  padding: 20px 20px 15px;
+  border-left: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.roof-center-content-item {
+  width: 33%;
+}
+
+.farmland-center-content-item-img {
+  text-align: center;
+  width: 50%;
+}
+
+.roof-air-img img {
+  width: 36px;
+}
+
+.farmland-center-content-item:first-child {
+  border-left: none;
+}
+
+.farmland-center-content-item-des-title {
+  font-size: 16px;
+}
+
+.farmland-center-content-item-des-num {
+  color: #2062e1;
+  padding-top: 8px;
+}
+
+.chargingPile .next-tabs-wrapped.next-tabs-top > .next-tabs-bar {
+  background-color: #fff;
+}
+
+// 屋顶光伏
+.roof-static {
+  display: flex;
+  justify-content: stretch;
+  background-color: #fff;
+}
+
+.roof-static .next-nav.next-normal .next-nav-item.next-menu-item.next-opened, .roof-static .next-nav.next-normal .next-menu-sub-menu .next-menu-item {
+  background-color: #fff;
+}
+
+.roof-static .next-nav.next-normal {
+  box-shadow: none;
+}
+
+.roof-static .next-menu {
+  border: none;
+}
+
+.roof-static-num, .roof-electricity {
+  width: 100%;
+}
+
+.roof-electricity {
+  margin: -20px 0;
+}
+
+.next-balloon-normal .next-balloon-close, .next-balloon-normal .next-balloon-close :hover {
+  color: #fff !important;
+}
+
+.next-balloon-normal.next-balloon-top-right:after {
+  display: none;
+}
+

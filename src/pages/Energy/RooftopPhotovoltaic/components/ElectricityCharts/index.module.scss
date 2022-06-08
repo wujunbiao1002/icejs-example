@@ -1,0 +1,38 @@
+@import '../../../../../../node_modules/@alifd/next/variables';
+
+.titleWrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nameTitle {
+  padding: 5px 5px 5px 20px;
+  border-left: 5px solid #97cefc;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.search, .leftSearch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+
+.leftSearch {
+  width: 100%;
+}
+
+.search span:hover, .leftSearch span:hover {
+  cursor: pointer;
+}
+
+.search span, .leftSearch span {
+  padding-right: 8px;
+}
+
+.rangePadding {
+  margin-left: 10px;
+}
+
